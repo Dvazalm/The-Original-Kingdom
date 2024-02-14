@@ -5,8 +5,10 @@ const RegisterForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   });
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +20,10 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setAlertMessage("Las contraseñas no coinciden");
+      return;
+    }  
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: 'POST',
@@ -27,21 +33,32 @@ const RegisterForm = () => {
         body: JSON.stringify(formData)
       });
       if (!response.ok) {
-        throw new Error('Error al registrar usuario');
+        const data = await response.json();
+        setAlertMessage(data.message);
+        return;
       }
-      const data = await response.json();
-      console.log(data.message); // Mensaje de éxito o error desde el servidor
+      setAlertMessage('Usuario registrado correctamente');
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
     } catch (error) {
       console.error('Error:', error.message);
+      setAlertMessage('Error al registrar usuario');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>REGISTER</h2>
       <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
       <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
       <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-      <button type="submit">Register</button>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
+      <button id='submitRegisterButtom' type="submit">Register</button>
+      {alertMessage && <div className="alert">{alertMessage}</div>}
     </form>
   );
 };
