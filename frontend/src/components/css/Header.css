@@ -1,0 +1,63 @@
+.App-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(2,0,36,1) 25%, rgba(0,212,255,0) 100%);
+    padding: 10px 20px; /* Agrega un poco de espacio alrededor del header */
+  }
+  
+  #pagConfig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centra el contenido dentro de #pagConfig */
+  }
+  
+  .volume-block {
+
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s;
+    background-image: url("../../../public/resources/volumeLogo.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .volume-slider {
+    width: 0; /* Inicialmente oculto */
+    transition: all 0.3s;
+    margin-top: 17px;
+    opacity: 0%;
+  }
+  
+  .volume-block:hover {
+    
+    width: 155px;
+    background-color: transparent;
+    background-size: 0px;
+    background-image: none;
+  }
+
+  .volume-block:hover .volume-slider {
+    width: 150px; /* Mostrar el selector de volumen al pasar el mouse sobre el bloque de volumen */
+    opacity: 100%;
+
+  }
+  
+  #registerAndLogin {
+    display: flex;
+    align-items: center;
+  }
+  
+  .registerButton,
+  .loginButton {
+    margin: 10px;
+  }
+  
+  /* Posicionar los botones a la derecha */
+  .registerButton,
+  .loginButton {
+    margin-left: 10px; /* Agregar un espacio entre los botones */
+  }
+  

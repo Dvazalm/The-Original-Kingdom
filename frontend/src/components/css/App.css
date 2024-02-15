@@ -7,18 +7,10 @@ body{
   text-align: center;
 }
 
-.App-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: blue;
-}
-
 .logo {
   color: white;
   width: auto;
   height: 100px;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,18 +19,3 @@ body{
 .logoIMG {
   width: 400px;
 }
-
-#registerAndLogin {
-  margin-right: 10px;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.registerButton,
-.loginButton {
-  margin: 10px;
-}
-
-

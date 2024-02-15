@@ -6,7 +6,7 @@
     border: solid black 2px;
     background-color: white;
 
-    transition: ease-in 0.4s;
+    transition: ease-in 0.1s;
 }
 
 .user-details {

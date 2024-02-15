@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './css/App.css';
 import './css/Form.css';
 import './css/UserProfile.css';
+import './css/Header.css';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
@@ -18,8 +19,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="logo">
-          <img src="./resources/logoLetters.png" className="logoIMG" alt="Logo" />
+        <div id="pagConfig">
+          <div className='volume-block'>
+          <input type="range" min="0" max="100" defaultValue="50" class="volume-slider" />
+          </div>
         </div>
 
         <div id="registerAndLogin">
@@ -37,6 +40,10 @@ function App() {
           )}
         </div>
       </header>
+
+      <div className="logo">
+        <img src="./resources/logoLetters.png" className="logoIMG" alt="Logo" />
+      </div>
     </div>
   );
 }
