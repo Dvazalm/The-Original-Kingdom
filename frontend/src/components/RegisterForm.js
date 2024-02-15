@@ -21,7 +21,8 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      setAlertMessage("Las contraseñas no coinciden");
+      console.log("Las contraseñas no coinciden");
+      setAlertMessage("Passwords do not match.");
       return;
     }  
     try {
@@ -51,7 +52,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="registerForm" className="formContainer" onSubmit={handleSubmit}>
       <h2>REGISTER</h2>
       <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
       <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />

@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function UserProfileMenu() {
-  // Supongamos que tienes el nombre de usuario y la URL de la foto de perfil en el estado o en el contexto de la aplicación
-  const username = 'JohnDoe';
-  const profileImageUrl = 'https://example.com/profile-image.jpg';
+function UserProfileMenu({ userEmail }) {
+  const [username, setUsername] = useState('');
+  const [profileImageUrl, setProfileImageUrl] = useState('');
+
+  useEffect(() => {
+    const fetchUserImage = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/petition/userImg/${userEmail}`);
+        if (response.ok) {
+          const imageUrl = await response.text();
+          setProfileImageUrl(imageUrl);
+        } else {
+          console.error('Error al obtener la imagen del usuario');
+        }
+      } catch (error) {
+        console.error('Error al obtener la imagen del usuario:', error);
+      }
+    };
+
+    fetchUserImage();
+  }, [userEmail]);
 
   return (
     <div className="user-profile-menu">
       <div className="user-profile-info">
-        <img src={profileImageUrl} alt="Profile" className="profile-image" />
-        <span className="username">{username}</span>
+        <img src={profileImageUrl} alt={profileImageUrl} className="profile-image" />
+        <span className="username">{username}</span> 
       </div>
-      {/* Aquí puedes agregar más elementos de menú o funcionalidades, como un botón para cerrar sesión */}
     </div>
   );
 }

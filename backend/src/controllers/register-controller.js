@@ -11,13 +11,15 @@ export const registerUser = async (req, res) => {
     // Verificar si ya existe un usuario con el mismo nombre de usuario o correo electrónico
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
-      return res.status(400).json({ message: 'Nombre de usuario o correo electrónico ya están en uso' });
+      console.log("ERROR: Nombre de usuario o correo electrónico ya están en uso");
+      return res.status(400).json({ message: 'Username or email already in use.' });
     }
 
     // Verificar el formato del correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ message: 'El formato del correo electrónico no es válido' });
+      console.log("ERROR: El formato del correo electrónico no es válido");
+      return res.status(400).json({ message: 'The email format is not valid.' });
     }
 
     // Generar un hash de la contraseña
@@ -27,17 +29,19 @@ export const registerUser = async (req, res) => {
     const newUser = new User({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      image: "./resources/userImg.png"
     });
 
     // Guardar el usuario en la base de datos
     await newUser.save();
 
     // Enviar una respuesta de éxito
-    res.status(201).json({ message: 'Usuario registrado correctamente' });
+    console.log("Usuario registrado correctamente");
+    res.status(201).json({ message: 'Successfully registered user' });
   } catch (error) {
     // Manejar errores
-    console.log('Error al registrar usuario', error);
-    res.status(500).json({ message: 'Error al registrar usuario' });
+    console.log('ERROR: Error al registrar usuario', error);
+    res.status(500).json({ message: 'Error registering user' });
   }
 };

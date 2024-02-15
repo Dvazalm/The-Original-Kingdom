@@ -1,46 +1,38 @@
-// frontend/src/App.js
+// App.js
 import React, { useState } from 'react';
 import './css/App.css';
 import './css/Form.css';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
-import UserProfileMenu from './UserProfileMenu'; // Importa el componente del menú de usuario
-import { toggleVisibilityRegisterAndLogin } from './ToggleVisibility';
+import UserProfileMenu from './UserProfileMenu';
+import { handleLoginSuccess, handleLoginFailure, handleToggleForm } from './Utils.js';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para rastrear si el usuario ha iniciado sesión
-
-  // Función para manejar el inicio de sesión exitoso
-  const handleLoginSuccess = () => {
-    console.log("El usuario se ha logueado correctamente"); // Mensaje en consola para indicar que el usuario se ha logueado correctamente
-    setIsLoggedIn(true);
-  };
-
-  // Función para manejar el fallo de inicio de sesión
-  const handleLoginFailure = () => {
-    console.log("No se pudo iniciar sesión correctamente"); // Mensaje en consola para indicar que no se pudo iniciar sesión correctamente
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   return (
     <div className="App">
       <header className="App-header">
-        
-        <div id='registerAndLogin'>
 
-        {!isLoggedIn && (
-          <>
-            <button className='registerButton' onClick={() => toggleVisibilityRegisterAndLogin("registerForm")}>Register</button>
-            <button className='loginButton' onClick={() => toggleVisibilityRegisterAndLogin("loginForm")}>Login</button>
-            <div id="registerForm" style={{ display: "none" }}>
-              <RegisterForm />
-            </div>
-            <div id="loginForm" style={{ display: "none" }}>
-              <LoginForm onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure} /> {/* Pasa la función handleLoginSuccess y handleLoginFailure como props a LoginForm */}
-            </div>
-          </>
-        )}
-        {isLoggedIn && <UserProfileMenu />}
+        <div className="logo">
+          <img src="./resources/logoLetters.png" className="logoIMG" alt="Logo" />
         </div>
+
+        <div id="registerAndLogin">
+          {!isLoggedIn && (
+            <>
+              <button className='registerButton' onClick={() => handleToggleForm("register", setShowRegisterForm, setShowLoginForm)}>Register</button>
+              <button className='loginButton' onClick={() => handleToggleForm("login", setShowRegisterForm, setShowLoginForm)}>Login</button>
+              {showRegisterForm && <RegisterForm />}
+              {showLoginForm && <LoginForm handleLoginSuccess={(token, email) => { handleLoginSuccess(setIsLoggedIn, setShowLoginForm); setUserEmail(email); }} onLoginFailure={handleLoginFailure} />}
+            </>
+          )}
+          {isLoggedIn && <UserProfileMenu userEmail={userEmail} />}
+        </div>
+        
       </header>
     </div>
   );

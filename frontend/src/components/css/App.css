@@ -4,29 +4,35 @@
 
 .App-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+}
+
+.logo {
+  color: white; /* Texto blanco */
+  width: auto;
+  height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center; /* Alinea el contenido hacia el extremo derecho */
   align-items: center;
 }
 
-#registerAndLogin{
-
+.logoIMG {
+  width: 400px;
 }
 
-.buttonContainer {
-  margin-top: 10px;
+
+#registerAndLogin {
+  margin-right: 10px;
+  background-color: red;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Alinea el contenido hacia el extremo derecho */
+  align-items: center;
 }
 
 .registerButton,
 .loginButton {
-  margin-right: 10px;
+  margin: 10px;
 }
-
-.formContainer {
-  margin-top: 20px;
-  background-color: #aaf0f9; /* Fondo azul agua */
-  padding: 20px; /* Añadido para separar un poco los bordes del formulario */
-  border-radius: 10px; /* Añadido para bordes redondeados */
-}
-

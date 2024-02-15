@@ -1,12 +1,13 @@
+// LoginForm.js
 import React, { useState } from 'react';
 
-function LoginForm({ handleLoginSuccess }) {
-  const [username, setUsername] = useState('');
+const LoginForm = ({ handleLoginSuccess }) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -22,12 +23,12 @@ function LoginForm({ handleLoginSuccess }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }), // Enviar email junto con la contraseña
       });
 
       if (response.ok) {
         const data = await response.json();
-        handleLoginSuccess(data.token);
+        handleLoginSuccess(data.token, email); // Pasar el email al manejar el éxito del inicio de sesión
       } else {
         throw new Error('Credenciales inválidas');
       }
@@ -37,29 +38,29 @@ function LoginForm({ handleLoginSuccess }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="loginForm" className="formContainer" onSubmit={handleSubmit}>
+      <h2>LOGIN</h2>
       <div>
-        <label htmlFor="username">Username:</label>
         <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={handleUsernameChange}
+          placeholder='Email'
+          id="loginEmail"
+          value={email}
+          onChange={handleEmailChange}
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
         <input
+          placeholder='Password'
           type="password"
-          id="password"
+          id="loginPassword"
           value={password}
           onChange={handlePasswordChange}
         />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" id='submitLoginButtom'>Login</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
-}
+};
 
 export default LoginForm;
