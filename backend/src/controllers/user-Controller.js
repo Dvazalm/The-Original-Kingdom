@@ -6,8 +6,8 @@ export const getUserByEmail = async (req, res) => {
     // Extraer el correo electrónico de la ruta
     const { email } = req.params;
 
-    // Buscar el usuario por correo electrónico en la base de datos
-    const user = await User.findOne({ email });
+    // Buscar el usuario por correo electrónico en la base de datos, excluyendo la contraseña
+    const user = await User.findOne({ email }).select('-password');
 
     // Verificar si se encontró un usuario
     if (!user) {
