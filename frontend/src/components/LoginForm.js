@@ -48,7 +48,6 @@ const LoginForm = ({ handleLoginSuccess }) => {
           onChange={handleEmailChange}
         />
       </div>
-      12313123@1321321.com
       <div>
         <input
           placeholder='Password'

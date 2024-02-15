@@ -1,7 +1,10 @@
+// UserProfileMenu.js
 import React, { useState, useEffect } from 'react';
 
 function UserProfileMenu({ userEmail }) {
   const [userData, setUserData] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -9,9 +12,7 @@ function UserProfileMenu({ userEmail }) {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // Aquí podrías enviar el token de autorización necesario
           },
-          // No es necesario enviar ningún cuerpo en la solicitud GET
         });
 
         if (response.ok) {
@@ -28,17 +29,32 @@ function UserProfileMenu({ userEmail }) {
     fetchData();
   }, [userEmail]);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    const profileImage = document.querySelector('.profile-image');
+    profileImage.classList.toggle('menu-open', !menuOpen);
+};
+
   if (!userData) {
-    return null; // Puedes retornar un spinner o un mensaje de carga mientras se obtienen los datos
+    return null;
   }
 
   return (
     <div className="user-profile-menu">
-      <div className="user-profile-info">
+      <div className="user-profile-info" onClick={toggleMenu}>
         <img src={userData.image} alt="Profile" className="profile-image" />
-        <span className="username">{userData.username}</span>
-        <span className="user-email">{userData.email}</span>
       </div>
+      {menuOpen && (
+        <div className="user-details">
+          <p>Username</p>
+          <span className="username">{userData.username}</span>
+          <p>Email</p>
+          <span className="user-email">{userData.email}</span>
+          <p>Best score</p>
+          <span className="user-score">{userData.maxscore}</span>
+          <div className="user-id">ID: {userData._id}</div>
+        </div>
+      )}
     </div>
   );
 }

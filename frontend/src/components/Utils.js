@@ -4,6 +4,7 @@ export const handleLoginSuccess = (setIsLoggedIn, setShowLoginForm) => {
     setIsLoggedIn(true);
     setShowLoginForm(false);
   };
+
   
   export const handleLoginFailure = () => {
     console.log("No se pudo iniciar sesión correctamente");

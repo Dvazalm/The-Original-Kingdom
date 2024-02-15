@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './css/App.css';
 import './css/Form.css';
+import './css/UserProfile.css';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
@@ -12,6 +13,7 @@ function App() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [userEmail, setUserEmail] = useState('');
+
 
   return (
     <div className="App">
@@ -30,7 +32,9 @@ function App() {
             </>
           )}
 
-          {isLoggedIn && <UserProfileMenu userEmail={userEmail} />}
+          {isLoggedIn && (
+            <div id='menuDeUsuario'>{isLoggedIn && <UserProfileMenu userEmail={userEmail} />}</div>
+          )}
         </div>
       </header>
     </div>

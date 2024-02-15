@@ -1,3 +1,8 @@
+
+body{
+  background-color: rgb(15, 15, 68);
+}
+
 .App {
   text-align: center;
 }
@@ -10,12 +15,12 @@
 }
 
 .logo {
-  color: white; /* Texto blanco */
+  color: white;
   width: auto;
   height: 100px;
   background-color: black;
   display: flex;
-  justify-content: center; /* Alinea el contenido hacia el extremo derecho */
+  justify-content: center;
   align-items: center;
 }
 
@@ -23,12 +28,11 @@
   width: 400px;
 }
 
-
 #registerAndLogin {
   margin-right: 10px;
-  background-color: red;
+
   display: flex;
-  justify-content: flex-end; /* Alinea el contenido hacia el extremo derecho */
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -36,3 +40,5 @@
 .loginButton {
   margin: 10px;
 }
+
+
