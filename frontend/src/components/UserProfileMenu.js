@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from 'react';
 
 function UserProfileMenu({ userEmail }) {
-  const [username, setUsername] = useState('');
-  const [profileImageUrl, setProfileImageUrl] = useState('');
-
+  const [userData, setUserData] = useState(null);
   useEffect(() => {
-    const fetchUserImage = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/petition/userImg/${userEmail}`);
+        const response = await fetch(`http://localhost:3000/api/users/data/${userEmail}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Aquí podrías enviar el token de autorización necesario
+          },
+          // No es necesario enviar ningún cuerpo en la solicitud GET
+        });
+
         if (response.ok) {
-          const imageUrl = await response.text();
-          setProfileImageUrl(imageUrl);
+          const data = await response.json();
+          setUserData(data);
         } else {
-          console.error('Error al obtener la imagen del usuario');
+          throw new Error('Error fetching user data');
         }
       } catch (error) {
-        console.error('Error al obtener la imagen del usuario:', error);
+        console.error('Error fetching user data:', error);
       }
     };
 
-    fetchUserImage();
+    fetchData();
   }, [userEmail]);
+
+  if (!userData) {
+    return null; // Puedes retornar un spinner o un mensaje de carga mientras se obtienen los datos
+  }
 
   return (
     <div className="user-profile-menu">
       <div className="user-profile-info">
-        <img src={profileImageUrl} alt={profileImageUrl} className="profile-image" />
-        <span className="username">{username}</span> 
+        <img src={userData.image} alt="Profile" className="profile-image" />
+        <span className="username">{userData.username}</span>
+        <span className="user-email">{userData.email}</span>
       </div>
     </div>
   );

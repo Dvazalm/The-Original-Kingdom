@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './css/App.css';
 import './css/Form.css';
 import RegisterForm from './RegisterForm';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
 import { handleLoginSuccess, handleLoginFailure, handleToggleForm } from './Utils.js';
 
@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <div className="logo">
           <img src="./resources/logoLetters.png" className="logoIMG" alt="Logo" />
         </div>
@@ -30,9 +29,9 @@ function App() {
               {showLoginForm && <LoginForm handleLoginSuccess={(token, email) => { handleLoginSuccess(setIsLoggedIn, setShowLoginForm); setUserEmail(email); }} onLoginFailure={handleLoginFailure} />}
             </>
           )}
+
           {isLoggedIn && <UserProfileMenu userEmail={userEmail} />}
         </div>
-        
       </header>
     </div>
   );

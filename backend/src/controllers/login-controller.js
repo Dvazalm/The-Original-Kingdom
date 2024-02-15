@@ -1,34 +1,30 @@
-// backend/src/controllers/login-controller.js
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js'; // Corrige la ruta de importación del modelo User
-import config from '../config.js'; // Importa el archivo de configuración
+import User from '../models/User.js';
+import config from '../config.js';
 
 export async function login(req, res, next) {
-  const { email, password } = req.body; // Cambia username por email
+  const { email, password } = req.body;
 
   try {
-    // Busca el usuario en la base de datos utilizando el correo electrónico
-    const user = await User.findOne({ email }); // Cambia username por email
+    const user = await User.findOne({ email });
 
     if (user) {
-      // Comprueba si la contraseña coincide con la almacenada en la base de datos
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (isPasswordValid) {
-        // Genera el token de autenticación
-        const token = jwt.sign({ id: user._id, email: user.email }, config.app.secretKey, { expiresIn: '1h' }); // Cambia username por email
+        const token = jwt.sign({ id: user._id, email: user.email }, config.app.secretKey, { expiresIn: '1h' });
 
-        console.log(`El usuario ${email} se ha logueado correctamente`); // Mensaje de consola para inicio de sesión exitoso
+        console.log(`El usuario ${email} se ha logueado correctamente`);
 
-        return res.json({ token });
+        // Devuelve el token y el correo electrónico del usuario
+        return res.json({ token, email: user.email });
       }
     }
 
-    // Si las credenciales son inválidas, devuelve un error
     throw new HttpStatusError(401, 'Invalid credentials');
   } catch (error) {
-    console.error('No se pudo loguear al usuario:', error); // Mensaje de consola para inicio de sesión fallido
-    next(error); // Pasa el error al middleware de manejo de errores
+    console.error('No se pudo loguear al usuario:', error);
+    next(error);
   }
 }
