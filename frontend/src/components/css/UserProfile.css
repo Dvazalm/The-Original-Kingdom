@@ -8,7 +8,7 @@
     border-radius: 100%;
     border: solid rgb(255, 255, 255) 2px;
     background-color: white;
-    transition: ease-in 0.1s;
+    transition: ease-in 0.3s;
 }
 
 .profile-image.menu-open {
@@ -22,14 +22,18 @@
 
 .user-details {
     position: absolute;
-    background-color: LightSteelBlue;
+    background-image: url("../../../public/resources/img/woodTexture.png");
+    background-color: #5D6975;
+    background-size: 140px;
     right: 35px;
     top: 90px;
+    
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    border: solid white 3px;
+    border: solid #ae725f 5px;
+    box-shadow: 0px 0px 30px black;
     z-index: 1;
     width: 200px;
     max-width: 300px;
@@ -40,6 +44,7 @@
     background-color: rgb(241, 241, 241);
     padding: 5px 10px;
     border-radius: 50px;
+    box-shadow: 0px 0px 10px black;
     border: solid black 2px;
     overflow: hidden;
     transition: all 1s;
@@ -47,9 +52,12 @@
 
 .user-details p{
     margin: 0;
+    color: white;
+    z-index: 5;
 }
 
 .user-details .user-id{
+    color: white;
     margin-top: 40px;
     font-size: 10px;
 }

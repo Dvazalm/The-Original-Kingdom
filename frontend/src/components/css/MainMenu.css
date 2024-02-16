@@ -1,5 +1,3 @@
-
-
 #MainMenu {
     background-image: url("../../../public/resources/video/pixelForestBG.gif");
     background-position: center;
@@ -21,9 +19,9 @@
     width: auto;
     display: flex;
     justify-content: center;
-  }
-  
-  .logoIMG {
+}
+
+.logoIMG {
     position: absolute;
     width: 700px;
     z-index: 0;
@@ -36,10 +34,17 @@
     0% {
         top: -100px;
     }
+
     50% {
-        top: -50px; /* La posición donde quieres que el logo llegue en el punto medio de la animación */
+        top: -50px;
+        /* La posición donde quieres que el logo llegue en el punto medio de la animación */
     }
+
     100% {
         top: -100px;
     }
 }
+
+
+
+
