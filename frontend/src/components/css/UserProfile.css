@@ -1,13 +1,24 @@
 
 .profile-image{
+    position: absolute;
+    right: 33px;
+    top: 20px;
     width: 50px;
     height: 50px;
     border-radius: 100%;
-    border: solid black 2px;
+    border: solid rgb(255, 255, 255) 2px;
     background-color: white;
-
     transition: ease-in 0.1s;
 }
+
+.profile-image.menu-open {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    transition: ease-out 0.1s;
+}
+
+
 
 .user-details {
     position: absolute;
@@ -19,11 +30,10 @@
     flex-direction: column;
     border-radius: 20px;
     border: solid white 3px;
-
+    z-index: 1;
     width: 200px;
     max-width: 300px;
 }
-
 
 .user-details span{
     margin-bottom: 15px;
@@ -42,13 +52,4 @@
 .user-details .user-id{
     margin-top: 40px;
     font-size: 10px;
-}
-
-/* ====[hover]==== */
-
-.profile-image.menu-open {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    transition: ease-out 0.1s;
 }

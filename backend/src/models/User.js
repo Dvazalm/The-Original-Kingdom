@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  image: {type: String, require: false,}
+  image: {type: String, require: false,},
+  maxscore: {type: Number, require: false,}
 });
 
 const User = mongoose.model('User', userSchema);

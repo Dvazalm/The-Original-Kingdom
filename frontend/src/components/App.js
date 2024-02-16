@@ -42,7 +42,7 @@ function App() {
       </header>
 
       <div className="logo">
-        <img src="./resources/logoLetters.png" className="logoIMG" alt="Logo" />
+        <img src="./resources/img/logoLetters.png" className="logoIMG" alt="Logo" />
       </div>
     </div>
   );

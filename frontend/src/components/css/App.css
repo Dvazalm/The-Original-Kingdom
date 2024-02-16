@@ -17,5 +17,8 @@ body{
 }
 
 .logoIMG {
-  width: 400px;
+  position: absolute;
+  top: 50px;
+  width: 700px;
+  z-index: 0;
 }

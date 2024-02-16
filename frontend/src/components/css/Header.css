@@ -6,7 +6,7 @@
     padding: 10px 20px; /* Agrega un poco de espacio alrededor del header */
   }
   
-  #pagConfig {
+  #pagConfig { 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,30 +14,29 @@
   }
   
   .volume-block {
-
     width: 50px;
     height: 50px;
     transition: all 0.3s;
-    background-image: url("../../../public/resources/volumeLogo.png");
+    background-image: url("../../../public/resources/img/volumeLogoWhite.png");
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: center;
   }
-  
+
+  .volume-block:hover {
+    width: 155px;
+    background-color: transparent;
+    background-size: 0px;
+    backdrop-filter:opacity(0%);
+  }
+
   .volume-slider {
     width: 0; /* Inicialmente oculto */
     transition: all 0.3s;
     margin-top: 17px;
     opacity: 0%;
   }
-  
-  .volume-block:hover {
-    
-    width: 155px;
-    background-color: transparent;
-    background-size: 0px;
-    background-image: none;
-  }
+
 
   .volume-block:hover .volume-slider {
     width: 150px; /* Mostrar el selector de volumen al pasar el mouse sobre el bloque de volumen */
@@ -59,5 +58,6 @@
   .registerButton,
   .loginButton {
     margin-left: 10px; /* Agregar un espacio entre los botones */
+    z-index: 1;
   }
   
