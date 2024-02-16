@@ -11,7 +11,7 @@ export function MusicController(props) {
   }, [props.volume]);
 
   return (
-    <audio controls autoPlay loop ref={audioRef}>
+    <audio controls autoPlay loop ref={audioRef} style={{display: 'none'}}>
       <source src={props.musicURL} type="audio/mpeg"></source>
     </audio>
   );

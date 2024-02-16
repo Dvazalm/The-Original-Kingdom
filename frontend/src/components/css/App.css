@@ -1,24 +1,9 @@
 
 body{
   background-color: rgb(15, 15, 68);
+
 }
 
 .App {
   text-align: center;
-}
-
-.logo {
-  color: white;
-  width: auto;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logoIMG {
-  position: absolute;
-  top: 50px;
-  width: 700px;
-  z-index: 0;
 }

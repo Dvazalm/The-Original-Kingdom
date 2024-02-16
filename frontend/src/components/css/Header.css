@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(180deg, rgba(2,0,36,1) 25%, rgba(0,212,255,0) 100%);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 25%, rgba(0, 0, 0, 0) 100%);
     padding: 10px 20px; /* Agrega un poco de espacio alrededor del header */
   }
   
@@ -49,15 +49,23 @@
     align-items: center;
   }
   
-  .registerButton,
-  .loginButton {
-    margin: 10px;
-  }
-  
-  /* Posicionar los botones a la derecha */
-  .registerButton,
-  .loginButton {
+
+  .registerButton, .loginButton {
     margin-left: 10px; /* Agregar un espacio entre los botones */
     z-index: 1;
+    transition: all 0.4s;
+    font-size: 12px;
+    background-color: rgb(217, 217, 217);
+    box-shadow: 1px 2px 5px  black;
+    border: solid black 2px;
+    border-radius: 10px;
   }
+
+  .registerButton:hover, .loginButton:hover {
+    box-shadow: 0px 0px 10px  black;
+    border-radius: 5px ;
+    background-color: white;
+    transition: all 0.2s;
+  }
+
   

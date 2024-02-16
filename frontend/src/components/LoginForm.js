@@ -30,7 +30,8 @@ const LoginForm = ({ handleLoginSuccess }) => {
         const data = await response.json();
         handleLoginSuccess(data.token, email); // Pasar el email al manejar el éxito del inicio de sesión
       } else {
-        throw new Error('Credenciales inválidas');
+        console.log("Credenciales inválidas");
+        throw new Error('Invalid credentials');
       }
     } catch (error) {
       setError(error.message);

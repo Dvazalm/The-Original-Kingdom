@@ -4,6 +4,7 @@ import './css/App.css';
 import './css/Form.css';
 import './css/UserProfile.css';
 import './css/Header.css';
+import './css/MainMenu.css';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+
         {/*Configuración general de la web*/}
         <div id="pagConfig">
 
@@ -54,15 +56,19 @@ function App() {
            {/*Musica de fondo*/}
           <MusicController musicURL="./resources/music/menuMusic.mp3" volume={volume} />
       </header>
-        
-        
+
+      <div id='MainMenu'>
 
 
 
       <div className="logo">
         <img src="./resources/img/logoLetters.png" className="logoIMG" alt="Logo" />
       </div>
-    </div>
+
+
+      </div>     {/*Cierre de Menu*/}
+
+    </div>    
   );
 }
 
