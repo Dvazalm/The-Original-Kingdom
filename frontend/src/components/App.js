@@ -1,5 +1,4 @@
-// App.js
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './css/App.css';
 import './css/Form.css';
 import './css/UserProfile.css';
@@ -16,35 +15,44 @@ function App() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [userEmail, setUserEmail] = useState('');
-  const [volume, setVolume] = useState(25); // Nuevo estado para el volumen
+  const [volume, setVolume] = useState(25);
+  const formRef = useRef(null);
 
   const handleVolumeChange = (event) => {
     const newVolume = event.target.value;
     setVolume(newVolume);
   };
 
+  const handleClickOutsideForm = (event) => {
+    if (formRef.current && !formRef.current.contains(event.target)) {
+      setShowRegisterForm(false);
+      setShowLoginForm(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutsideForm);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideForm);
+    };
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-
-        {/*Configuración general de la web*/}
         <div id="pagConfig">
-
-          {/*Manejar volumen de musica*/}
           <div className='volume-block'>
             <input type="range" min="0" max="100" value={volume} className="volume-slider" onChange={handleVolumeChange}/>
           </div>
-          
         </div>
 
-       {/*Sistema de registro*/}
         <div id="registerAndLogin">
           {!isLoggedIn && (
             <>
               <button className='registerButton' onClick={() => handleToggleForm("register", setShowRegisterForm, setShowLoginForm)}>Register</button>
               <button className='loginButton' onClick={() => handleToggleForm("login", setShowRegisterForm, setShowLoginForm)}>Login</button>
-              {showRegisterForm && <RegisterForm />}
-              {showLoginForm && <LoginForm handleLoginSuccess={(token, email) => { handleLoginSuccess(setIsLoggedIn, setShowLoginForm); setUserEmail(email); }} onLoginFailure={handleLoginFailure} />}
+              {showRegisterForm && <div ref={formRef}><RegisterForm /></div>}
+              {showLoginForm && <div ref={formRef}><LoginForm handleLoginSuccess={(token, email) => { handleLoginSuccess(setIsLoggedIn, setShowLoginForm); setUserEmail(email); }} onLoginFailure={handleLoginFailure} /></div>}
             </>
           )}
 
@@ -53,24 +61,18 @@ function App() {
           )}
         </div>
 
-          
-           
-           <MusicController musicURL="./resources/music/menuMusic.mp3" volume={volume} />
+        <MusicController musicURL="./resources/music/menuMusic.mp3" volume={volume} />
       </header>
 
       <div id='MainMenu'>
+        <div className="logo">
+          <img src="./resources/img/logoLetters.png" className="logoIMG" alt="Logo" />
+        </div>
 
-      <div className="logo">
-        <img src="./resources/img/logoLetters.png" className="logoIMG" alt="Logo" />
+        <div className='startDiv'>
+        <div className='startButton' onClick={() => console.log("boton pulsado")}>START</div>
+        </div>
       </div>
-
-      <div className='startDiv'>
-    <div className='startButton'>START</div>
-</div>
-
-
-      </div>     {/*Cierre de Menu*/}
-
     </div>    
   );
 }
