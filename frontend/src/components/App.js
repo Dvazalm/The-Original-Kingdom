@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useRef, useEffect } from 'react';
 import './css/App.css';
 import './css/Form.css';
@@ -10,6 +9,7 @@ import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
 import { handleLoginSuccess, handleLoginFailure, handleToggleForm } from './Utils.js';
 import { MusicController } from "./MusicController.js";
+import Curtain from './Curtain'; // Importar el componente Curtain
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,6 +18,7 @@ function App() {
   const [userEmail, setUserEmail] = useState('');
   const [volume, setVolume] = useState(25);
   const formRef = useRef(null);
+  const [isCurtainOpen, setIsCurtainOpen] = useState(false); // Estado para controlar el telón
 
   const handleVolumeChange = (event) => {
     const newVolume = event.target.value;
@@ -59,6 +60,11 @@ function App() {
     }
   }, []);
 
+  const handleClickStart = () => {
+    setIsCurtainOpen(true); // Abrir el telón al hacer clic en "Start"
+    setTimeout(() => setIsCurtainOpen(false), 3000); // Cerrar el telón después de 3 segundos
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -92,9 +98,12 @@ function App() {
         </div>
 
         <div className='startDiv'>
-          <div className='startButton' onClick={() => console.log("boton pulsado")}>START</div>
+          <div className='startButton' onClick={handleClickStart}>START</div>
         </div>
       </div>
+
+      {/* Añadir el componente Curtain */}
+      <Curtain isOpen={isCurtainOpen} />
     </div>    
   );
 }
