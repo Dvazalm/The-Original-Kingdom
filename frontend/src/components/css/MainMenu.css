@@ -37,7 +37,7 @@
 
     50% {
         top: -50px;
-        /* La posición donde quieres que el logo llegue en el punto medio de la animación */
+        
     }
 
     100% {
@@ -46,5 +46,40 @@
 }
 
 
+.startDiv {
+    margin-top: 400px; /*Altura de botón de start*/
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.startButton {
+    background-image: url("../../../public/resources/button/redButton1.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 700px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-size: 100px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    transition: all 0.3s;
+    border-radius: 200px;
+}
 
 
+
+.startButton:hover { 
+    background-image: url("../../../public/resources/button/redButton1Shadowed.png");
+    scale: 1.05;
+    transition: all 0.2s;
+
+    cursor: pointer;
+
+}

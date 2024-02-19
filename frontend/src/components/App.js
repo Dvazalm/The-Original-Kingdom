@@ -53,17 +53,20 @@ function App() {
           )}
         </div>
 
-           {/*Musica de fondo*/}
-          <MusicController musicURL="./resources/music/menuMusic.mp3" volume={volume} />
+          
+           
+           <MusicController musicURL="./resources/music/menuMusic.mp3" volume={volume} />
       </header>
 
       <div id='MainMenu'>
 
-
-
       <div className="logo">
         <img src="./resources/img/logoLetters.png" className="logoIMG" alt="Logo" />
       </div>
+
+      <div className='startDiv'>
+    <div className='startButton'>START</div>
+</div>
 
 
       </div>     {/*Cierre de Menu*/}
