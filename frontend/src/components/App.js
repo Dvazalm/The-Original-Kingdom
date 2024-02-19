@@ -1,3 +1,4 @@
+// App.js
 import React, { useState, useRef, useEffect } from 'react';
 import './css/App.css';
 import './css/Form.css';
@@ -23,6 +24,16 @@ function App() {
     setVolume(newVolume);
   };
 
+  const handleLogout = () => {
+    // Limpiar el almacenamiento local
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    // Actualizar el estado de isLoggedIn
+    setIsLoggedIn(false);
+    setUserEmail('');
+    console.log("Usuario deslogueado =(");
+  };
+
   const handleClickOutsideForm = (event) => {
     if (formRef.current && !formRef.current.contains(event.target)) {
       setShowRegisterForm(false);
@@ -35,6 +46,17 @@ function App() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutsideForm);
     };
+  }, []);
+
+  useEffect(() => {
+    // Verificar si hay un token almacenado en el almacenamiento local al cargar la aplicación
+    const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email');
+    if (token && email) {
+      // Aquí puedes establecer el estado de isLoggedIn como true y realizar cualquier otra inicialización necesaria
+      setIsLoggedIn(true);
+      setUserEmail(email);
+    }
   }, []);
 
   return (
@@ -57,7 +79,7 @@ function App() {
           )}
 
           {isLoggedIn && (
-            <div id='menuDeUsuario'>{isLoggedIn && <UserProfileMenu userEmail={userEmail} />}</div>
+            <div id='menuDeUsuario'><UserProfileMenu userEmail={userEmail} handleLogout={handleLogout} /></div>
           )}
         </div>
 
@@ -70,7 +92,7 @@ function App() {
         </div>
 
         <div className='startDiv'>
-        <div className='startButton' onClick={() => console.log("boton pulsado")}>START</div>
+          <div className='startButton' onClick={() => console.log("boton pulsado")}>START</div>
         </div>
       </div>
     </div>    

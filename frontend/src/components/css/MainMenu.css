@@ -79,7 +79,7 @@
     background-image: url("../../../public/resources/button/redButton1Shadowed.png");
     scale: 1.05;
     transition: all 0.2s;
-
+    color: yellow;
     cursor: pointer;
 
 }

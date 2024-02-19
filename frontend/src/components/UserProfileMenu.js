@@ -1,7 +1,7 @@
 // UserProfileMenu.js
 import React, { useState, useEffect } from 'react';
 
-function UserProfileMenu({ userEmail }) {
+function UserProfileMenu({ userEmail, handleLogout }) {
   const [userData, setUserData] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,26 +33,24 @@ function UserProfileMenu({ userEmail }) {
     setMenuOpen(!menuOpen);
     const profileImage = document.querySelector('.profile-image');
     profileImage.classList.toggle('menu-open', !menuOpen);
-};
-
-  if (!userData) {
-    return null;
-  }
+  };
 
   return (
     <div className="user-profile-menu">
       <div className="user-profile-info" onClick={toggleMenu}>
-        <img src={userData.image} alt="Profile" className="profile-image" />
+        <img src={userData?.image} alt="Profile" className="profile-image" />
       </div>
       {menuOpen && (
         <div className="user-details">
           <p>Username</p>
-          <span className="username">{userData.username}</span>
+          <span className="username">{userData?.username}</span>
           <p>Email</p>
-          <span className="user-email">{userData.email}</span>
+          <span className="user-email">{userData?.email}</span>
           <p>Best score</p>
-          <span className="user-score">{userData.maxscore}</span>
-          <div className="user-id">ID: {userData._id}</div>
+          <span className="user-score">{userData?.maxscore}</span>
+          <button className='logoutButton' onClick={handleLogout}><p>Logout</p> <img alt='' className='logoutLogo' src='./resources/img/logoutLogo.png'/></button>
+        
+         <div className="user-id">ID: {userData?._id}</div>
         </div>
       )}
     </div>

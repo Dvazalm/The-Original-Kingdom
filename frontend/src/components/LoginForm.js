@@ -14,6 +14,14 @@ const LoginForm = ({ handleLoginSuccess }) => {
     setPassword(event.target.value);
   };
 
+  const handleLoginSuccessWithStorage = (token, email) => {
+    // Almacenar el token y el correo electrónico en el almacenamiento local
+    localStorage.setItem('token', token);
+    localStorage.setItem('email', email);
+    // Llamar a la función de manejo de inicio de sesión original
+    handleLoginSuccess(token, email);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -28,7 +36,7 @@ const LoginForm = ({ handleLoginSuccess }) => {
 
       if (response.ok) {
         const data = await response.json();
-        handleLoginSuccess(data.token, email); // Pasar el email al manejar el éxito del inicio de sesión
+        handleLoginSuccessWithStorage(data.token, email); // Pasar el token y el email al manejar el éxito del inicio de sesión
       } else {
         console.log("Credenciales inválidas");
         throw new Error('Invalid credentials');
