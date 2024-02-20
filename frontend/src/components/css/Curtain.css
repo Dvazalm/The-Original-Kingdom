@@ -5,11 +5,11 @@
     width: 100%;
     height: 0;
     background-color: red; /* Cambiar a tu color deseado */
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat:repeat-x;
     background-image: url("../../../public/resources/img/CourtainRedCover.png");
-    transition: height 1s ease-in-out;
+    transition: height 1s ease;
     z-index: 999;
   }
   
