@@ -9,7 +9,6 @@ import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm.js';
 import UserProfileMenu from './UserProfileMenu';
 import { handleLoginSuccess, handleLoginFailure, handleToggleForm } from './Utils.js';
-import { playSoundEffect, playBackgroundMusic } from "./AudioController.js"; // Importamos las funciones playSoundEffect y playBackgroundMusic
 import Curtain from './Curtain'; // Importar el componente Curtain
 
 function App() {
@@ -27,15 +26,12 @@ function App() {
 
 
   const handleVolumeChange = (event) => {
-    const newVolume = event.target.value;
-    setVolume(newVolume);
-    playBackgroundMusic("./resources/music/backgroundMusic.mp3", newVolume); 
+    setVolume(event.target.value);
   };
 
   const handleVolumeSFXChange = (event) => {
-    const newVolumeSFX = event.target.value;
-    setVolumeSFX(newVolumeSFX);
-    playSoundEffect("./resources/music/menuMusic.mp3", newVolumeSFX); // Actualizar el volumen del sonido al cambiar el control deslizante
+    setVolumeSFX(event.target.value);
+
   };
 
   const handleLogout = () => {
@@ -70,14 +66,12 @@ function App() {
   }, []);
 
   const handleClickStart = () => {
-    playSoundEffect("./resources/music/menuMusic.mp3", volumeSFX);
     setIsCurtainOpen(true);
     setTimeout(() => setIsGameON(true), 1000);
     setTimeout(() => setIsCurtainOpen(false), 3000);
   };
 
   const handleClickMainMenu = () => {
-    playBackgroundMusic("./resources/music/menuMusic.mp3", volume);
     setIsCurtainOpen(true); 
     setTimeout(() => setIsGameON(false), 1000);
     setTimeout(() => setIsCurtainOpen(false), 3000);
