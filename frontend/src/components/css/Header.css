@@ -8,40 +8,47 @@
   
   #pagConfig { 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     text-align: center; /* Centra el contenido dentro de #pagConfig */
+    width: 200px;
   }
   
   .volume-block {
     width: 50px;
     height: 50px;
     transition: all 0.3s;
-    background-image: url("../../../public/resources/img/volumeLogoWhite.png");
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   .volume-block:hover {
-    width: 155px;
     background-color: transparent;
     background-size: 0px;
     backdrop-filter:opacity(0%);
   }
 
-  .volume-slider {
-    width: 0; /* Inicialmente oculto */
+  #musicVolume{
+  background-image: url("../../../public/resources/img/MusicSFXLogoWhite.png");
+  }
+
+  #musicVolumeSFX{
+    background-image: url("../../../public/resources/img/volumeSFXLogoWhite.png");
+    }
+
+  .volume-slider{
+    width: 0;
     transition: all 0.3s;
     margin-top: 17px;
     opacity: 0%;
   }
 
 
-  .volume-block:hover .volume-slider {
-    width: 150px; /* Mostrar el selector de volumen al pasar el mouse sobre el bloque de volumen */
-    opacity: 100%;
 
+
+  .volume-block:hover .volume-slider {
+    width: 150px; 
+    opacity: 100%;
   }
   
   #registerAndLogin {
