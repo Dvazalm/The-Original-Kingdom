@@ -8,7 +8,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("../../../public/resources/img/CourtainRedCover.png");
+    background-image: url("https://t3.ftcdn.net/jpg/04/80/67/40/360_F_480674048_FDAQBtAipfh21aI3ysFAx0n2G7wlfCcK.jpg");
     transition: height 1s ease-in-out;
     z-index: 999;
   }
