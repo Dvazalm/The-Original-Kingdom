@@ -76,29 +76,4 @@
     cursor: pointer;
   }
 
-
-  #MainMenuButton{
-    position: absolute;
-    right: 10px;
-    top: 0px;
-    font-size: 20px;
-    padding: 35px 35px 40px 35px;
-    text-align: center;
-    z-index: 2;
-    background: url("../../../public/resources/button/blueButton.png");
-    background-position: center;
-    background-size: cover;
-    color: white;
-    border-radius: 100%;
-    transition: all 0.4s;
-
-  }
-
-  #MainMenuButton:hover{
-    scale: 1.1;
-    color: yellow;
-    cursor: pointer;
-    transition: all 0.2s;
-    background-color: ;
-  }
   
