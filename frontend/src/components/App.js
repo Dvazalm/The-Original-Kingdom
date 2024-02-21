@@ -23,12 +23,6 @@ function App() {
   const formRef = useRef(null);
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
 
-  
-
-  useEffect(() => {
-    handleClickStart();
-  });
-
 
   const handleVolumeChange = (event) => {
     const newVolume = event.target.value;
@@ -102,7 +96,7 @@ function App() {
           <div id='MainMenuButton' onClick={handleClickMainMenu}>Main menu</div>
         )}
         <div id="registerAndLogin">
-          {!isLoggedIn && (
+          {!isLoggedIn && !isGameON && (
             <>
               <button className='registerButton' onClick={() => handleToggleForm("register", setShowRegisterForm, setShowLoginForm)}>Register</button>
               <button className='loginButton' onClick={() => handleToggleForm("login", setShowRegisterForm, setShowLoginForm)}>Login</button>
@@ -131,6 +125,7 @@ function App() {
         </div>
       )}
       <Curtain isOpen={isCurtainOpen} />
+
     </div>
   );
   
