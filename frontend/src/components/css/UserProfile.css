@@ -9,9 +9,7 @@
     border: solid rgb(255, 255, 255) 2px;
     background-color: white;
     transition: ease-in 0.3s;
-    cursor: pointer;
 }
-
 
 .profile-image.menu-open {
     width: 60px;
