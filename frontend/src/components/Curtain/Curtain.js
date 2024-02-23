@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './css/Curtain.css';
 
 const Curtain = ({ isOpen }) => {
   const [isActive, setIsActive] = useState(false);

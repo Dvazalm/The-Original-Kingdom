@@ -1,10 +1,11 @@
 // LoginForm.js
 import React, { useState } from 'react';
 
-const LoginForm = ({ handleLoginSuccess }) => {
+export const LoginForm = ({ handleLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -72,4 +73,24 @@ const LoginForm = ({ handleLoginSuccess }) => {
   );
 };
 
-export default LoginForm;
+
+export const handleLoginSuccess = (setIsLoggedIn, setShowLoginForm) => {
+  console.log("El usuario se ha logueado correctamente");
+  setIsLoggedIn(true);
+  setShowLoginForm(false);
+};
+
+
+export const handleLoginFailure = () => {
+  console.log("No se pudo iniciar sesión correctamente");
+};
+
+export const handleToggleForm = (formType, setShowRegisterForm, setShowLoginForm) => {
+  if (formType === "register") {
+    setShowRegisterForm(prevState => !prevState);
+    setShowLoginForm(false);
+  } else if (formType === "login") {
+    setShowLoginForm(prevState => !prevState);
+    setShowRegisterForm(false);
+  }
+};
