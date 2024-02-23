@@ -54,6 +54,7 @@
   #registerAndLogin {
     display: flex;
     align-items: center;
+   
   }
   
 
@@ -66,6 +67,8 @@
     box-shadow: 1px 2px 5px  black;
     border: solid black 2px;
     border-radius: 10px;
+    position: absolute;
+    top: 25px;
   }
 
   .registerButton:hover, .loginButton:hover {
@@ -75,6 +78,18 @@
     transition: all 0.2s;
     cursor: pointer;
   }
+
+  .registerButton {
+    right: 120px;
+
+  }
+
+  .loginButton{
+    right: 33px;
+ 
+  }
+
+
 
 
   #MainMenuButton{

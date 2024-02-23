@@ -39,6 +39,7 @@ const RegisterForm = () => {
         return;
       }
       setAlertMessage('Usuario registrado correctamente');
+      console.log("Usuario registrado correctamente")
       setFormData({
         username: '',
         email: '',

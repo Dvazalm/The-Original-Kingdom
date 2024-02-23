@@ -64,13 +64,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 10px;
     color: white;
     font-size: 100px;
     font-family: 'Times New Roman', Times, serif;
     position: relative;
     transition: all 0.3s;
     border-radius: 200px;
+    top: -70px;
 }
 
 
