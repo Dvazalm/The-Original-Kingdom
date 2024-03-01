@@ -36,7 +36,7 @@ const GameMenu = ({ handleClickMainMenu }) => {
                     <div id="acceptPoints">
                         <h1>ACCEPT</h1>
                         {decisionData && decisionData.acceptPoints && (
-                            <ul>
+                            <ul  className="decisionList">
                                 {Object.entries(decisionData.acceptPoints).map(([type, value]) => (
                                     <li key={type}>{type}: {value}</li>
                                 ))} 
@@ -44,8 +44,16 @@ const GameMenu = ({ handleClickMainMenu }) => {
                         )}
                     </div>
                     <div id="declinePoints">
-                        <h1>REFUSE</h1>
-                        Ejemplo 1
+                        <h1>DECLINE</h1>
+                        
+                            {decisionData && decisionData.declinePoints && (
+                            <ul className="decisionList">
+                                {Object.entries(decisionData.declinePoints).map(([type, value]) => (
+                                    <li key={type}>{type}: {value}</li>
+                                ))} 
+                            </ul>
+                        )}
+                        
                     </div>
                 </div>
             </div>

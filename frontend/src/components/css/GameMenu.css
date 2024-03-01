@@ -126,21 +126,48 @@
     z-index: 5;
     transition: all 0.3s;
     color: white;
+    cursor: pointer;
 }
+
+#points #acceptPoints:hover{
+    box-shadow: 0 0 20px rgb(32, 138, 0);
+
+}
+
+#points #declinePoints:hover{
+    box-shadow: 0 0 20px rgb(139, 0, 0);
+
+}
+
 
 #points div h1{
     text-align: center;
     padding-bottom: 10px;
+    background: radial-gradient(#80808054, transparent);
+
 }
 
 
+.decisionList{
+    list-style:none;
+    font-size: 20px;
+    
+}
+
+.decisionList li{
+    text-align: justify;
+    margin: 10px 0;
+    text-transform:capitalize;
+}
+
 #acceptPoints H1{
-    color: rgb(0, 224, 0);
+    color: rgb(0, 201, 0);
+    
 }
 
 
 #declinePoints H1{
-        color: red;
+        color: rgb(201, 0, 0);
 }
 
 
