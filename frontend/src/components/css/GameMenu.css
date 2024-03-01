@@ -1,5 +1,5 @@
 #GameMenu {
-    background-image: url("../../../public/resources/img/pixelCastleBG.jpeg");
+    background-image: url("../../../public/resources/img/pixelCastleBG.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,24 +11,10 @@
     overflow: hidden;
     z-index: -10;
 
-}
-
-
-
-.logo {
-    width: auto;
     display: flex;
     justify-content: center;
 }
 
-.logoIMG {
-    position: absolute;
-    width: 700px;
-    z-index: 0;
-    top: -100px;
-    animation: logoAni 20s infinite 0s ease-in-out;
-    background: radial-gradient(rgba(255, 255, 0, 0.25) 0%, transparent 70%);
-}
 
 @keyframes logoAni {
     0% {
@@ -37,7 +23,7 @@
 
     50% {
         top: -50px;
-        
+
     }
 
     100% {
@@ -46,40 +32,138 @@
 }
 
 
-.startDiv {
-    margin-top: 400px; /*Altura de botón de start*/
-    width: auto;
-    display: flex;
-    justify-content: center;
-}
 
-.startButton {
-    background-image: url("../../../public/resources/button/redButton1.png");
+#MainMenuButton {
+    position: absolute;
+    left: 15px;
+    top: 100px;
+    font-size: 20px;
+    padding: 35px 35px 40px 35px;
+    text-align: center;
+    background: url("../../../public/resources/button/blueButton.png");
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
-    width: 700px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 10px;
     color: white;
-    font-size: 100px;
-    font-family: 'Times New Roman', Times, serif;
-    position: relative;
-    transition: all 0.3s;
-    border-radius: 200px;
+    border-radius: 100%;
+    transition: all 0.4s;
+    z-index: 2;
+    /* Asegura que MainMenuButton esté por encima de todo */
 }
 
-
-
-.startButton:hover { 
-    background-image: url("../../../public/resources/button/redButton1Shadowed.png");
-    scale: 1.05;
-    transition: all 0.2s;
+#MainMenuButton:hover {
+    filter: drop-shadow(5px 5px 14px #000000);
+    scale: 1.1;
     color: yellow;
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+/* decision menu */
+#DecisionMenu {
+    position: absolute;
+    bottom: 20px;
+    width: 700px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#decision {
+    background-color: rgb(138, 94, 68);
+    background-image: url("../../../public/resources/img/paperTexture.png");
+    background-position: center;
+    background-size: cover;
+    border: solid 3px black;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+    border-radius: 30px;
+    overflow: hidden;
+
+    width: 300px;
+    height: 400px;
+    bottom: 20px;
+    z-index: 6;
+}
+
+#decision h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: radial-gradient(#ffffff54, transparent);
 
 }
+
+#decision p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
+    margin: 25px 25px 0 25px;
+    color: black;
+    font-size: 20px;
+    background: radial-gradient(#ffffff54, transparent);
+}
+
+#points{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: auto;
+    bottom: 20px;
+}
+
+#points div{
+    width: 200px;
+    height: 300px;
+    padding: 0 30px;
+    text-align: left;
+
+    background-color: rgb(138, 94, 68);
+    background-image: url("../../../public/resources/img/woodTexture2.jpg");
+    background-position: center;
+    background-size: 150px;
+    border: solid 3px black;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 5;
+    transition: all 0.3s;
+    color: white;
+}
+
+#points div h1{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+#acceptPoints H1{
+    color: rgb(0, 224, 0);
+}
+
+
+#declinePoints H1{
+        color: red;
+}
+
+
+
+
+
+.NPCimg {
+    margin: 20px; 
+    border: outset 4px rgb(185, 138, 6); 
+    background-color: rgb(247, 247, 247);
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+
+.NPCimg img{
+    scale: 1.1;
+    width: 200px;
+    height: 200px;
+}
+
+
+

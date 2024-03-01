@@ -8,7 +8,7 @@ function UserProfileMenu({ userEmail, handleLogout }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/users/data/${userEmail}`, {
+        const response = await fetch(`http://localhost:3000/api/user/data/${userEmail}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

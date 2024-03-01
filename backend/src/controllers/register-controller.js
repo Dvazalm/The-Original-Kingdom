@@ -31,7 +31,8 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       image: "./resources/img/userImg.png",
-      maxscore: 0
+      maxscore: 0,
+      rol: ""
     });
 
     // Guardar el usuario en la base de datos

@@ -11,6 +11,7 @@ import Curtain from './Curtain/Curtain';
 import AudioController from './Header/AudioController';
 import LoginAndRegisterController from './Header/LoginAndRegisterController';
 import MainMenu from './MainMenu/MainMenu';
+import GameMenu from './GameMenu/GameMenu';
 
 function App() {
   const [isGameON, setIsGameON] = useState(false);
@@ -43,24 +44,15 @@ function App() {
         )};
 
 
-        {isGameON && (
-          <div id='MainMenuButton' onClick={handleClickMainMenu}>Main menu</div>
-        )}
-
       </header>
       <div id="App-content">
 
         {!isGameON && (
-          <>
-      <MainMenu handleClickStart={handleClickStart} />
- 
-          </>
+          <MainMenu handleClickStart={handleClickStart} />
         )}
 
         {isGameON && (
-          <div id='GameMenu'>
-            Juego iniciado
-          </div>
+         <GameMenu handleClickMainMenu={handleClickMainMenu} />
         )}
 
         <Curtain isOpen={isCurtainOpen} />

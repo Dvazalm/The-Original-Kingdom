@@ -13,8 +13,6 @@
 
 }
 
-
-
 .logo {
     width: auto;
     display: flex;
@@ -37,7 +35,7 @@
 
     50% {
         top: -50px;
-        
+
     }
 
     100% {
@@ -47,7 +45,8 @@
 
 
 .startDiv {
-    margin-top: 400px; /*Altura de botón de start*/
+    margin-top: 400px;
+    /*Altura de botón de start*/
     width: auto;
     display: flex;
     justify-content: center;
@@ -70,16 +69,14 @@
     position: relative;
     transition: all 0.3s;
     border-radius: 200px;
-    top: -70px;
 }
 
 
 
-.startButton:hover { 
-    background-image: url("../../../public/resources/button/redButton1Shadowed.png");
+.startButton:hover {
+    filter: drop-shadow(5px 5px 14px #000000);
     scale: 1.05;
     transition: all 0.2s;
     color: yellow;
     cursor: pointer;
-
 }

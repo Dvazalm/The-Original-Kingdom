@@ -4,6 +4,7 @@
     align-items: center;
     background: linear-gradient(180deg, rgb(0, 0, 0) 25%, rgba(255, 0, 0, 0) 100%);
     padding: 10px 20px; /* Agrega un poco de espacio alrededor del header */
+    z-index: 1;
   }
   
   #pagConfig { 
@@ -92,28 +93,5 @@
 
 
 
-  #MainMenuButton{
-    position: absolute;
-    right: 10px;
-    top: 0px;
-    font-size: 20px;
-    padding: 35px 35px 40px 35px;
-    text-align: center;
-    z-index: 2;
-    background: url("../../../public/resources/button/blueButton.png");
-    background-position: center;
-    background-size: cover;
-    color: white;
-    border-radius: 100%;
-    transition: all 0.4s;
-    z-index: 40;
-  }
 
-  #MainMenuButton:hover{
-    scale: 1.1;
-    color: yellow;
-    cursor: pointer;
-    transition: all 0.2s;
-    
-  }
   
