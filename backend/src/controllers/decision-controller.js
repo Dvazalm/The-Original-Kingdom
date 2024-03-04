@@ -16,6 +16,25 @@ export const randomDecision = async (req, res) => {
     }
 };
 
+export const getDecision = async (req, res) => {
+  try {
+      const { decisionId } = req.params;
+
+      const decision = await Decision.findById(decisionId);
+
+      if (!decision) {
+        return res.status(404).json({ message: 'Decisión no encontrada' });
+      }
+
+      console.log('Decision encontrada:', decision);
+      res.json(decision);
+  } catch (error) {
+      console.error('Error al obtener la decisión:', error);
+      res.status(500).json({ message: 'Error al obtener la decisión' });
+  }
+};
+
+
 
 export const createDecision = async (req, res) => {
   try {

@@ -90,8 +90,27 @@
  
   }
 
+  #MainMenuButton {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    padding: 35px 35px 40px 35px;
+    text-align: center;
+    background: url("../../../public/resources/button/blueButton.png");
+    background-position: center;
+    background-size: cover;
+    color: white;
+    border-radius: 100%;
+    transition: all 0.4s;
+    z-index: 2;
+    /* Asegura que MainMenuButton esté por encima de todo */
+}
 
-
-
-
-  
+#MainMenuButton:hover {
+    filter: drop-shadow(5px 5px 14px #000000);
+    scale: 1.1;
+    color: yellow;
+    cursor: pointer;
+    transition: all 0.2s;
+}

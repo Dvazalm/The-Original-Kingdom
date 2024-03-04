@@ -33,31 +33,6 @@
 
 
 
-#MainMenuButton {
-    position: absolute;
-    left: 15px;
-    top: 100px;
-    font-size: 20px;
-    padding: 35px 35px 40px 35px;
-    text-align: center;
-    background: url("../../../public/resources/button/blueButton.png");
-    background-position: center;
-    background-size: cover;
-    color: white;
-    border-radius: 100%;
-    transition: all 0.4s;
-    z-index: 2;
-    /* Asegura que MainMenuButton esté por encima de todo */
-}
-
-#MainMenuButton:hover {
-    filter: drop-shadow(5px 5px 14px #000000);
-    scale: 1.1;
-    color: yellow;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
 
 /* decision menu */
 #DecisionMenu {
@@ -171,9 +146,6 @@
 }
 
 
-
-
-
 .NPCimg {
     margin: 20px; 
     border: outset 4px rgb(185, 138, 6); 
@@ -193,4 +165,33 @@
 }
 
 
+#factionsBlock{
+    position: absolute;
+    top: 120px;
+    width: auto;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
 
+.faction{
+    margin: 0 10px;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:  white;
+    background-color: orange;
+    transition: all 1s;
+
+
+}
+
+.faction img{
+    width: 75px;
+    height: 75px;
+    color: red;
+}
