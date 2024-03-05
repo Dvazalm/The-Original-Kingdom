@@ -39,9 +39,9 @@ export const getDecision = async (req, res) => {
 export const createDecision = async (req, res) => {
   try {
       // Extraer los datos de la solicitud
-      const { title, description, acceptPoints, declinePoints } = req.body;
+      const { title, description, NpcImg, acceptPoints, declinePoints } = req.body;
 
-      const newDecision = new Decision({ title, description, acceptPoints, declinePoints });
+      const newDecision = new Decision({ title, description, NpcImg, acceptPoints, declinePoints });
 
       const savedDecision = await newDecision.save();
 

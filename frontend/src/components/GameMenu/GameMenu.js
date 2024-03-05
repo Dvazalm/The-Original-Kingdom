@@ -88,30 +88,30 @@ const GameMenu = () => {
 
             <div id="factionsBlock">
                 <div className="faction" id="religion">
-                    <img alt="cruz" src="./resources/factionLogo/religion.png" />
-                    {factions.religion.points}
+                    <img alt="religion" src="./resources/factionLogo/religion.png" />
+                    {/* {factions.religion.points} */}
                 </div>
                 <div className="faction" id="population">
-                    <img alt="cruz" src="./resources/factionLogo/population.png" />
-                    {factions.population.points}
+                    <img alt="population" src="./resources/factionLogo/population.png" />
+                    {/* {factions.population.points} */}
                 </div>
                 <div className="faction" id="science">
-                    <img alt="cruz" src="./resources/factionLogo/science.png" />
-                    {factions.science.points}
+                    <img alt="science" src="./resources/factionLogo/science.png" />
+                    {/* {factions.science.points} */}
                 </div>
                 <div className="faction" id="protection">
-                    <img alt="cruz" src="./resources/factionLogo/protection.png" />
-                    {factions.protection.points}
+                    <img alt="protection" src="./resources/factionLogo/protection.png" />
+                    {/* {factions.protection.points} */}
                 </div>
                 <div className="faction" id="economy">
-                    <img alt="cruz" src="./resources/factionLogo/economy.png" />
-                    {factions.economy.points}
+                    <img alt="economy" src="./resources/factionLogo/economy.png" />
+                    {/* {factions.economy.points} */}
                 </div>
 
             </div>
             <div id="DecisionMenu">
                 <div className="NPCimg">
-                    <img src="./resources/NPCs/villagers/8.png" alt="" />
+                    <img src={decisionData ? decisionData.NpcImg : "./resources/NPCs/villagers/8.png"} alt="" />
                 </div>
                 <div id="decision">
                     <h2>{decisionData ? decisionData.title : "Loading..."}</h2>

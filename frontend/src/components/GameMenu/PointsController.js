@@ -28,15 +28,24 @@ export const handlePoints = (factions, points) => {
 
 // Función para verificar la puntuación de las facciones y aplicar cambios de color
 export const applyColorChanges = (factions) => {
+
     Object.entries(factions).forEach(([faction, data]) => {
+
+        const pointsPorcent = (data.points / 2) * 10;
+
         const factionElement = document.getElementById(faction);
         if (factionElement) {
             if (data.points > 16) {
-                factionElement.style.background = "green";
+                factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+
             } else if (data.points >= 7 && data.points <= 16) {
-                factionElement.style.background = "orange";
+                factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+
             } else {
-                factionElement.style.background = "red";
+                factionElement.style.background = `linear-gradient(0deg, red 0%, red ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100%)`;
+                if(pointsPorcent === 0){
+                    factionElement.style.background = `#575757`;
+                }
             }
         }
     });

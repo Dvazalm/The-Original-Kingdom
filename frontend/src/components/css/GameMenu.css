@@ -184,10 +184,9 @@
     align-items: center;
     justify-content: center;
     color:  white;
-    background-color: orange;
-    transition: all 1s;
-
-
+    background: linear-gradient(0deg, orange 0%, orange 50%, grey 50%, grey 100%);
+    
+    transition: all 1;
 }
 
 .faction img{
