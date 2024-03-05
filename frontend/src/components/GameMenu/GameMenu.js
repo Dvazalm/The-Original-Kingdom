@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { handlePoints, applyColorChanges } from "./PointsController";
+import { handlePoints, applyColorChanges, applyHoverColorChanges } from "./PointsController";
 
 const GameMenu = () => {
     const [decisionData, setDecisionData] = useState(null);
     const [factions, setFactions] = useState({
-        religion: {
-            points: 10
-        },
-        science: {
-            points: 10
-        },
-        population: {
-            points: 10
-        },
-        protection: {
-            points: 10
-        },
-        economy: {
-            points: 10
-        },
-
+        religion: { points: 10 },
+        science: { points: 10 },
+        population: { points: 10 },
+        protection: { points: 10 },
+        economy: { points: 10 },
     });
 
     //Busqueda en la base de datos
@@ -35,7 +24,6 @@ const GameMenu = () => {
             console.error('Error al obtener la decisión:', error);
         }
     };
-
 
     //Animacion para subir y bajar
     const fetchAnimation = () => {
@@ -72,6 +60,35 @@ const GameMenu = () => {
         fetchAnimation();
     }, []);
 
+
+
+    // Función para manejar el hover sobre acceptPoints
+    const handleAcceptPointsHover = () => {
+        if (decisionData && decisionData.acceptPoints) {
+            const affectedFactions = Object.keys(decisionData.acceptPoints);
+            applyHoverColorChanges(factions, decisionData.acceptPoints, affectedFactions);
+        }
+    };
+    // Función para manejar el hover sobre declinePoints
+    const handleDeclinePointsHover = () => {
+        if (decisionData && decisionData.declinePoints) {
+            const affectedFactions = Object.keys(decisionData.declinePoints);
+            applyHoverColorChanges(factions, decisionData.declinePoints, affectedFactions);
+        }
+    };
+
+    // Función para manejar el leave del hover sobre acceptPoints
+    const handleAcceptPointsLeave = () => {
+        applyColorChanges(factions);
+    };
+
+    // Función para manejar el leave del hover sobre declinePoints
+    const handleDeclinePointsLeave = () => {
+        applyColorChanges(factions);
+    };
+
+
+
     // Función para manejar el clic en acceptPoints o declinePoints
     const handlePointsClick = (points) => {
         newDecision();
@@ -83,9 +100,20 @@ const GameMenu = () => {
     };
 
 
+
+
+
+    ;
+
+
+
+
+
+
+
+
     return (
         <div id='GameMenu'>
-
             <div id="factionsBlock">
                 <div className="faction" id="religion">
                     <img alt="religion" src="./resources/factionLogo/religion.png" />
@@ -107,7 +135,6 @@ const GameMenu = () => {
                     <img alt="economy" src="./resources/factionLogo/economy.png" />
                     {/* {factions.economy.points} */}
                 </div>
-
             </div>
             <div id="DecisionMenu">
                 <div className="NPCimg">
@@ -119,7 +146,10 @@ const GameMenu = () => {
                 </div>
             </div>
             <div id="points">
-                <div id="acceptPoints" onClick={() => handlePointsClick(decisionData.acceptPoints)}>
+
+
+
+                <div id="acceptPoints" onClick={() => handlePointsClick(decisionData.acceptPoints)} onMouseEnter={handleAcceptPointsHover} onMouseLeave={handleAcceptPointsLeave}>
                     <h1>ACCEPT</h1>
                     {decisionData && decisionData.acceptPoints && (
                         <ul className="decisionList">
@@ -129,7 +159,11 @@ const GameMenu = () => {
                         </ul>
                     )}
                 </div>
-                <div id="declinePoints" onClick={() => handlePointsClick(decisionData.declinePoints)}>
+
+
+
+
+                <div id="declinePoints" onClick={() => handlePointsClick(decisionData.declinePoints)} onMouseEnter={handleDeclinePointsHover} onMouseLeave={handleDeclinePointsLeave}>
                     <h1>DECLINE</h1>
                     {decisionData && decisionData.declinePoints && (
                         <ul className="decisionList">

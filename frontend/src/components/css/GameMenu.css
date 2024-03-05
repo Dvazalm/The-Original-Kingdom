@@ -185,7 +185,6 @@
     justify-content: center;
     color:  white;
     background: linear-gradient(0deg, orange 0%, orange 50%, grey 50%, grey 100%);
-    
     transition: all 1;
 }
 
