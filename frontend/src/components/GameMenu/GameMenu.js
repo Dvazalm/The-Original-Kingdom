@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { handlePoints, applyColorChanges, applyHoverColorChanges } from "./PointsController";
 
-const GameMenu = () => {
+const GameMenu = ({handleClickMainMenu}) => {
     const [decisionData, setDecisionData] = useState(null);
     const [factions, setFactions] = useState({
         religion: { points: 10 },
@@ -10,6 +10,9 @@ const GameMenu = () => {
         protection: { points: 10 },
         economy: { points: 10 },
     });
+    const [lost, setLost] = useState(false); // Estado para controlar si el jugador ha perdido
+    const [playerPoints, setplayerPoints] = useState(0); // Estado para controlar si el jugador ha perdido
+    const [lostFaction, setLostFaction] = useState(""); // Estado para almacenar la facción que llegó a 0
 
     //Busqueda en la base de datos
     const fetchData = async () => {
@@ -65,11 +68,6 @@ const GameMenu = () => {
         setTimeout(FetchTimeout, 1000);
     };
 
-    //Hace que se active la primera pregunta
-    useEffect(() => {
-        fetchData();
-        fetchAnimation();
-    }, []);
 
 
 
@@ -124,13 +122,42 @@ const GameMenu = () => {
             setFactions(newFactions); // Actualizar las facciones con los nuevos puntos
         }
         applyColorChanges(factions);
+        if (!lost) {
+            setplayerPoints(playerPoints + 10);
+        };
     };
 
 
 
 
 
-    ;
+
+
+    //Hace que se active la primera pregunta
+    useEffect(() => {
+        fetchData();
+        fetchAnimation();
+    }, []);
+
+    useEffect(() => {
+        const isLost = Object.values(factions).some(faction => faction.points <= 0);
+        if (isLost) {
+            setLost(true);
+            const lostFaction = Object.entries(factions).find(([faction, data]) => data.points <= 0);
+            if (lostFaction) {
+                const [factionName] = lostFaction;
+                setLostFaction(factionName); // Establecer la facción que llegó a 0
+            }
+            const deleteTimeout = () => {
+                const points = document.getElementById('points');
+                const DecisionMenu = document.getElementById('DecisionMenu');
+                DecisionMenu.remove();
+                points.remove();
+            };
+            setTimeout(deleteTimeout, 1000);
+        }
+    }, [factions]);
+
 
 
 
@@ -141,6 +168,12 @@ const GameMenu = () => {
 
     return (
         <div id='GameMenu'>
+            <div id="LateralMenu">
+                <div id="poitsMenu">
+                    <h1>POINTS</h1>
+                    <p>{playerPoints} </p>
+                </div>
+            </div>
             <div id="factionsBlock">
                 <div className="faction" id="religion">
                     <img alt="religion" src="./resources/factionLogo/religion.png" />
@@ -172,17 +205,26 @@ const GameMenu = () => {
                     <p>{decisionData ? decisionData.description : "Loading..."}</p>
                 </div>
             </div>
+
             <div id="points">
 
-
-
                 <div id="acceptPoints" onClick={() => handlePointsClick(decisionData.acceptPoints)} onMouseEnter={handleAcceptPointsHover} onMouseLeave={handleAcceptPointsLeave} />
-
                 <div id="declinePoints" onClick={() => handlePointsClick(decisionData.declinePoints)} onMouseEnter={handleDeclinePointsHover} onMouseLeave={handleDeclinePointsLeave} />
 
+            </div>
 
+            {lost && (
+                <div className="loss-menu">
+                    <h1>LOSE</h1>
 
-                {/*
+                    <p>The <b>{lostFaction}</b> faction fell to 0. Now you will suffer the consequences...</p>
+                    <p className="playerPoints">Your points <br/> <b>{playerPoints}</b></p>
+                    <button onClick={handleClickMainMenu}><p>Main menu</p></button>
+
+                </div>
+            )}
+
+            {/*
                         //////  CONTENIDO DESCARTADO PARA VER CUANTO SUMA Y RESTA CASA DECICION //////
 
                                    <h1>ACCEPT</h1>
@@ -206,7 +248,7 @@ const GameMenu = () => {
                 */}
 
 
-            </div>
+
         </div>
     );
 };

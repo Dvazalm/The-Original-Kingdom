@@ -17,7 +17,6 @@ export const handlePoints = (factions, points) => {
 
             // Verificar si la facción llegó a 20 o más puntos
             if (newFactions[faction].points >= 20) {
-                console.log(`La facción ${faction} ha llegado a 20 puntos`);
                 newFactions[faction].points = 20; // Establecer los puntos en 20
             }
         });

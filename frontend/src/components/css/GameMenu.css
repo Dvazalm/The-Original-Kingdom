@@ -153,6 +153,7 @@
     bottom: 20px;
 }
 
+
 #points div{
     width: 200px;
     height: 400px;
@@ -162,3 +163,96 @@
     background-size: 150px;
     
 }
+
+
+.loss-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
+    background-image: url(../../../public/resources/img/woodTexture2.jpg);
+    background-size: 150px;
+    padding: 20px;
+    border: outset 4px rgb(189, 0, 0); 
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    width: 600px;
+    height: 400px;
+    color: white;
+    font-size: 20px;
+
+}
+
+.loss-menu button {
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    padding: 35px 35px 40px 35px;
+    text-align: center;
+    background: url("../../../public/resources/button/redButton1.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    border-color: transparent;
+    transition: all 0.4s;
+    z-index: 2;
+    color: white;
+
+    /* Asegura que MainMenuButton esté por encima de todo */
+}
+
+.loss-menu button p{
+    transform: translateY(3px);    
+    margin: 0px ;
+}
+
+
+
+.loss-menu button:hover {
+    filter: drop-shadow(0px 0px 5px #000000);
+    scale: 1.1;
+    color: yellow;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+
+
+#LateralMenu{
+    position: absolute;
+    right: 50px;    
+    width: 5vw;
+    height: 30vw;
+    top: 100px;
+}
+
+#poitsMenu{
+    color: white;
+    filter: drop-shadow(0px 0px 20px #000000);  
+}
+.playerPoints{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.playerPoints b{
+    font-size: 40px;
+}
+
+
+#poitsMenu h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+#poitsMenu p{
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+
+
+

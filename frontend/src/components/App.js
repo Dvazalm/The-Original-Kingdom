@@ -56,7 +56,7 @@ function App() {
         )}
 
         {isGameON && (
-         <GameMenu />
+         <GameMenu handleClickMainMenu={handleClickMainMenu}/>
         )}
 
         <Curtain isOpen={isCurtainOpen} />
