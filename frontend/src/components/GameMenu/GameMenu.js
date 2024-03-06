@@ -28,30 +28,41 @@ const GameMenu = () => {
     //Animacion para subir y bajar
     const fetchAnimation = () => {
         const DecisionMenu = document.getElementById('DecisionMenu');
+        const NPCimg = document.getElementById('NPCimg');
+
         const points = document.getElementById('points');
 
         DecisionMenu.style.transition = 'transform 2s ease';
         DecisionMenu.style.transform = 'translateY(200%)';
+        NPCimg.style.transition = 'transform 2s ease';
+        NPCimg.style.transform = 'translateY(200%)';
 
-        points.style.transition = 'transform 2.5s ease';
+        points.style.transition = 'transform 0 ease';
         points.style.transform = 'translateY(200%)';
 
         const revertAnimation = () => {
             DecisionMenu.style.transform = 'translateY(0)';
-            points.style.transform = 'translateY(0)';
+            NPCimg.style.transform = 'translateY(0)';
+
         };
-        setTimeout(revertAnimation, 2000);
+        setTimeout(revertAnimation, 1000);
+
+        const revertButton = () => { points.style.transform = 'translateY(0)'; };
+        setTimeout(revertButton, 2700);
 
     };
 
     //Seleciona una animacion nueva
     const newDecision = () => {
         fetchAnimation();
+        const decisionElement = document.getElementById('decision');
+        decisionElement.style.transform = 'rotate(0deg) translateX(0px)';
+        decisionElement.style.boxShadow = '0 0 20px rgb(0, 0, 0)';
         //Pequño timeOut para que no se vea en pantalla como cambia de decision
         const FetchTimeout = () => {
             fetchData();
         };
-        setTimeout(FetchTimeout, 2000);
+        setTimeout(FetchTimeout, 1000);
     };
 
     //Hace que se active la primera pregunta
@@ -67,6 +78,11 @@ const GameMenu = () => {
         if (decisionData && decisionData.acceptPoints) {
             const affectedFactions = Object.keys(decisionData.acceptPoints);
             applyHoverColorChanges(factions, decisionData.acceptPoints, affectedFactions);
+
+            const decisionElement = document.getElementById('decision');
+            decisionElement.style.transform = 'rotate(-3deg) translateX(-30px)';
+            decisionElement.style.boxShadow = '0 0 20px rgb(0, 255, 0)';
+
         }
     };
     // Función para manejar el hover sobre declinePoints
@@ -74,17 +90,28 @@ const GameMenu = () => {
         if (decisionData && decisionData.declinePoints) {
             const affectedFactions = Object.keys(decisionData.declinePoints);
             applyHoverColorChanges(factions, decisionData.declinePoints, affectedFactions);
+
+            const decisionElement = document.getElementById('decision');
+            decisionElement.style.transform = 'rotate(3deg) translateX(30px)';
+            decisionElement.style.boxShadow = '0 0 20px rgb(255, 0, 0)';
         }
     };
 
     // Función para manejar el leave del hover sobre acceptPoints
     const handleAcceptPointsLeave = () => {
         applyColorChanges(factions);
+        const decisionElement = document.getElementById('decision');
+        decisionElement.style.transform = 'rotate(0deg) translateX(0px)';
+        decisionElement.style.boxShadow = '0 0 20px rgb(0, 0, 0)';
     };
 
     // Función para manejar el leave del hover sobre declinePoints
     const handleDeclinePointsLeave = () => {
         applyColorChanges(factions);
+        const decisionElement = document.getElementById('decision');
+        decisionElement.style.transform = 'rotate(0deg) translateX(0px)';
+        decisionElement.style.boxShadow = '0 0 20px rgb(0, 0, 0)';
+
     };
 
 
@@ -137,7 +164,7 @@ const GameMenu = () => {
                 </div>
             </div>
             <div id="DecisionMenu">
-                <div className="NPCimg">
+                <div id="NPCimg">
                     <img src={decisionData ? decisionData.NpcImg : "./resources/NPCs/villagers/8.png"} alt="" />
                 </div>
                 <div id="decision">
@@ -149,8 +176,16 @@ const GameMenu = () => {
 
 
 
-                <div id="acceptPoints" onClick={() => handlePointsClick(decisionData.acceptPoints)} onMouseEnter={handleAcceptPointsHover} onMouseLeave={handleAcceptPointsLeave}>
-                    <h1>ACCEPT</h1>
+                <div id="acceptPoints" onClick={() => handlePointsClick(decisionData.acceptPoints)} onMouseEnter={handleAcceptPointsHover} onMouseLeave={handleAcceptPointsLeave} />
+
+                <div id="declinePoints" onClick={() => handlePointsClick(decisionData.declinePoints)} onMouseEnter={handleDeclinePointsHover} onMouseLeave={handleDeclinePointsLeave} />
+
+
+
+                {/*
+                        //////  CONTENIDO DESCARTADO PARA VER CUANTO SUMA Y RESTA CASA DECICION //////
+
+                                   <h1>ACCEPT</h1>
                     {decisionData && decisionData.acceptPoints && (
                         <ul className="decisionList">
                             {Object.entries(decisionData.acceptPoints).map(([type, value]) => (
@@ -158,13 +193,9 @@ const GameMenu = () => {
                             ))}
                         </ul>
                     )}
-                </div>
 
 
-
-
-                <div id="declinePoints" onClick={() => handlePointsClick(decisionData.declinePoints)} onMouseEnter={handleDeclinePointsHover} onMouseLeave={handleDeclinePointsLeave}>
-                    <h1>DECLINE</h1>
+                <h1>DECLINE</h1>
                     {decisionData && decisionData.declinePoints && (
                         <ul className="decisionList">
                             {Object.entries(decisionData.declinePoints).map(([type, value]) => (
@@ -172,7 +203,9 @@ const GameMenu = () => {
                             ))}
                         </ul>
                     )}
-                </div>
+                */}
+
+
             </div>
         </div>
     );

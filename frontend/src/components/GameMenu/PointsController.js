@@ -54,11 +54,9 @@ export const applyColorChanges = (factions) => {
 
 
 
-// Función para manejar el hover y cambiar gradualmente el color solo de las facciones afectadas
 export const applyHoverColorChanges = (factions, pointsChange, affectedFactions) => {
 
     const previousPointsMap = {}; // Almacenar los puntos anteriores antes de comenzar la animación
-    const velocidad = 5;
 
     affectedFactions.forEach(faction => {
         previousPointsMap[faction] = factions[faction].points;
@@ -68,27 +66,16 @@ export const applyHoverColorChanges = (factions, pointsChange, affectedFactions)
         const factionElement = document.getElementById(faction);
         
         if (factionElement) {
-            let currentPercentage = (previousPointsMap[faction] / 20) * 100; // Iniciar la animación desde el valor anterior
-            const increment = (pointsPorcent - currentPercentage) / 10; // Dividir el cambio total en 10 pasos
-            
-            const interval = setInterval(() => {
-                // Incrementar gradualmente el porcentaje del color de fondo
-                currentPercentage += increment;
-                if (currentPercentage >= pointsPorcent) {
-                    clearInterval(interval); // Detener la animación cuando alcance el porcentaje deseado
-                }
-                
-                // Aplicar el color de fondo actualizado
-                if (newPoints > 16) {
-                    factionElement.style.background = `linear-gradient(0deg, green 0%, green ${currentPercentage}%, grey ${currentPercentage}%, grey 100% )`;
-                } else if (newPoints >= 7 && newPoints <= 16) {
-                    factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${currentPercentage}%, grey ${currentPercentage}%, grey 100% )`;
-                } else if (newPoints >= 1 && newPoints <= 6) {
-                    factionElement.style.background = `linear-gradient(0deg, red 0%, red ${currentPercentage}%, grey ${currentPercentage}%, grey 100%)`;
-                } else {
-                    factionElement.style.background = `#383838`;
-                }
-            }, velocidad); // Cambiar el color cada 50ms para crear una animación suave
+            // Aplicar directamente el color de fondo final sin animación
+            if (newPoints > 16) {
+                factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+            } else if (newPoints >= 7 && newPoints <= 16) {
+                factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+            } else if (newPoints >= 1 && newPoints <= 6) {
+                factionElement.style.background = `linear-gradient(0deg, red 0%, red ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100%)`;
+            } else {
+                factionElement.style.background = `#383838`;
+            }
         }
     });
     
