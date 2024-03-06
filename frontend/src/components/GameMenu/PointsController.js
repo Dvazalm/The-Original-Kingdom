@@ -36,10 +36,10 @@ export const applyColorChanges = (factions) => {
         if (factionElement) {
             if (data.points > 16) {
                 factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
-
-            } else if (data.points >= 7 && data.points <= 16) {
+            } else if (data.points >= 12 && data.points <= 16) {
+                factionElement.style.background = `linear-gradient(0deg, yellow 0%, yellow ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+            } else if (data.points >= 7 && data.points <= 11) {
                 factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
-
             } else {
                 factionElement.style.background = `linear-gradient(0deg, red 0%, red ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100%)`;
                 if(pointsPorcent === 0){
@@ -68,7 +68,9 @@ export const applyHoverColorChanges = (factions, pointsChange, affectedFactions)
             // Aplicar directamente el color de fondo final sin animación
             if (newPoints > 16) {
                 factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
-            } else if (newPoints >= 7 && newPoints <= 16) {
+            } else if (newPoints >= 12 && newPoints <= 16) {
+                factionElement.style.background = `linear-gradient(0deg, yellow 0%, yellow ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+            } else if (newPoints >= 7 && newPoints <= 11) {
                 factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else if (newPoints >= 1 && newPoints <= 6) {
                 factionElement.style.background = `linear-gradient(0deg, red 0%, red ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100%)`;
