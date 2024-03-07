@@ -8,7 +8,7 @@ export const handlePoints = (factions, points) => {
         Object.entries(points).forEach(([faction, value]) => {
             // Actualizar los puntos de la facción
             newFactions[faction].points += value;
-            
+
             // Verificar si la facción llegó a 0 puntos o menos
             if (newFactions[faction].points <= 0) {
                 console.log(`PERDISTE, la facción ${faction} llegó a 0`);
@@ -35,17 +35,26 @@ export const applyColorChanges = (factions) => {
         const factionElement = document.getElementById(faction);
         if (factionElement) {
             if (data.points > 16) {
-                factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+                factionElement.style.background = `linear-gradient(0deg, #1EC300 0%, #1EC300 ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else if (data.points >= 12 && data.points <= 16) {
                 factionElement.style.background = `linear-gradient(0deg, yellow 0%, yellow ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else if (data.points >= 7 && data.points <= 11) {
                 factionElement.style.background = `linear-gradient(0deg, orange 0%, orange ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else {
                 factionElement.style.background = `linear-gradient(0deg, red 0%, red ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100%)`;
-                if(pointsPorcent === 0){
+                if (pointsPorcent === 0) {
                     factionElement.style.background = `#575757`;
                 }
             }
+
+            if (data.points > 19) {
+                factionElement.style.boxShadow = `0 0 10px rgb(0, 200, 0)`;
+            } else if (data.points < 6) {
+                factionElement.style.boxShadow = `0 0 10px rgb(200, 0, 0)`;
+            }else{
+                factionElement.style.boxShadow = `0 0 20px rgb(0, 0, 0)`;
+            }
+
         }
     });
 };
@@ -59,15 +68,16 @@ export const applyHoverColorChanges = (factions, pointsChange, affectedFactions)
 
     affectedFactions.forEach(faction => {
         previousPointsMap[faction] = factions[faction].points;
-        
+
         const newPoints = factions[faction].points + (pointsChange[faction] || 0);
         const pointsPorcent = (newPoints / 20) * 100; // Calcular el porcentaje basado en el nuevo valor
         const factionElement = document.getElementById(faction);
-        
+
         if (factionElement) {
             // Aplicar directamente el color de fondo final sin animación
-            if (newPoints > 16) {
-                factionElement.style.background = `linear-gradient(0deg, green 0%, green ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
+
+            if(newPoints >16) {
+                factionElement.style.background = `linear-gradient(0deg, #1EC300 0%, #1EC300 ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else if (newPoints >= 12 && newPoints <= 16) {
                 factionElement.style.background = `linear-gradient(0deg, yellow 0%, yellow ${pointsPorcent}%, grey ${pointsPorcent}%, grey 100% )`;
             } else if (newPoints >= 7 && newPoints <= 11) {
@@ -77,9 +87,17 @@ export const applyHoverColorChanges = (factions, pointsChange, affectedFactions)
             } else {
                 factionElement.style.background = `#383838`;
             }
+
+            if (newPoints > 19) {
+                factionElement.style.boxShadow = `0 0 10px rgb(0, 200, 0)`;
+            } else if (newPoints < 6) {
+                factionElement.style.boxShadow = `0 0 10px rgb(200, 0, 0)`;
+            }else{
+                factionElement.style.boxShadow = `0 0 20px rgb(0, 0, 0)`;
+            };
         }
     });
-    
+
     // Almacenar los puntos anteriores antes de comenzar la animación
     return previousPointsMap;
 };
