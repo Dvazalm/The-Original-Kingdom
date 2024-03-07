@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { handlePoints, applyColorChanges, applyHoverColorChanges } from "./PointsController";
 
-const GameMenu = ({handleClickMainMenu}) => {
+const GameMenu = ({ handleClickMainMenu }) => {
     const [decisionData, setDecisionData] = useState(null);
     const [factions, setFactions] = useState({
         religion: { points: 10 },
@@ -140,6 +140,7 @@ const GameMenu = ({handleClickMainMenu}) => {
     }, []);
 
     useEffect(() => {
+
         const isLost = Object.values(factions).some(faction => faction.points <= 0);
         if (isLost) {
             setLost(true);
@@ -148,6 +149,7 @@ const GameMenu = ({handleClickMainMenu}) => {
                 const [factionName] = lostFaction;
                 setLostFaction(factionName); // Establecer la facción que llegó a 0
             }
+
             const deleteTimeout = () => {
                 const points = document.getElementById('points');
                 const DecisionMenu = document.getElementById('DecisionMenu');
@@ -155,8 +157,36 @@ const GameMenu = ({handleClickMainMenu}) => {
                 points.remove();
             };
             setTimeout(deleteTimeout, 1000);
+
+            const userEmail = localStorage.getItem('email');
+            if (userEmail) {
+
+                // Envía la solicitud de actualización si la puntuación actual es mayor que la anterior
+                const updateMaxScore = async () => {
+                    try {
+                        const response = await fetch(`http://localhost:3000/api/user/update/${userEmail}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                maxscore: playerPoints // Actualiza el maxscore con la puntuación actual del jugador
+                            })
+                        });
+                        if (!response.ok) {
+                            throw new Error('No se pudo actualizar la puntuación máxima del usuario');
+                        }
+                        console.log('La puntuación máxima del usuario se ha actualizado correctamente');
+                    } catch (error) {
+                        console.error('Error al actualizar la puntuación máxima del usuario:', error);
+                    }
+                };
+
+                updateMaxScore(); // Llama a la función para enviar la solicitud de actualización
+            }
+
         }
-    }, [factions]);
+    }, [factions, playerPoints]);
 
 
 
@@ -218,7 +248,7 @@ const GameMenu = ({handleClickMainMenu}) => {
                     <h1>LOSE</h1>
 
                     <p>The <b>{lostFaction}</b> faction fell to 0. Now you will suffer the consequences...</p>
-                    <p className="playerPoints">Your points <br/> <b>{playerPoints}</b></p>
+                    <p className="playerPoints">Your points <br /> <b>{playerPoints}</b></p>
                     <button onClick={handleClickMainMenu}><p>Main menu</p></button>
 
                 </div>

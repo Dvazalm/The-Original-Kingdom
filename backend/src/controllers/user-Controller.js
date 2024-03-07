@@ -59,6 +59,11 @@ export const updateUserByEmail = async (req, res) => {
       return res.status(404).json({ message: `No user found with the provided email. Email provided: ${email}` });
     }
 
+        // Compara la puntuación máxima actual del usuario con la puntuación obtenida en la partida
+        if (req.body.maxscore < user.maxscore) {
+          // Si la puntuación obtenida en la partida es mayor, actualiza el campo maxscore del usuario
+          req.body.maxscore = user.maxscore;
+        }
 
 
     delete req.body.email;

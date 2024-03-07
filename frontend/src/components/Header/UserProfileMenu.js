@@ -44,8 +44,10 @@ function UserProfileMenu({ userEmail, handleLogout }) {
         <div className="user-details">
           <p>Username</p>
           <span className="username">{userData?.username}</span>
+          {/* 
           <p>Email</p>
           <span className="user-email">{userData?.email}</span>
+          */}
           <p>Best score</p>
           <span className="user-score">{userData?.maxscore}</span>
           <button className='logoutButton' onClick={handleLogout}><p>Logout</p> <img alt='' className='logoutLogo' src='./resources/img/logoutLogo.png'/></button>
