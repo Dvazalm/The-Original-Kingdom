@@ -136,6 +136,7 @@
     color:  white;
     background: linear-gradient(0deg, orange 0%, orange 50%, grey 50%, grey 100%);
     transition: all 1;
+    border: outset 4px rgb(241, 241, 241); 
 
 }
 
