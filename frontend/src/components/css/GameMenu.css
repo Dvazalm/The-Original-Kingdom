@@ -176,9 +176,9 @@
     background-image: url(../../../public/resources/img/woodTexture2.jpg);
     background-size: 150px;
     padding: 20px;
-    border: outset 4px rgb(189, 0, 0); 
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: solid 4px rgb(139, 139, 139) ;
+    border-radius: 15px;
+    box-shadow: 0 0 1000px rgb(0, 0, 0);
     z-index: 9999;
     width: 600px;
     height: 400px;
@@ -209,6 +209,7 @@
     transform: translateY(3px);    
     margin: 0px ;
 }
+
 
 
 

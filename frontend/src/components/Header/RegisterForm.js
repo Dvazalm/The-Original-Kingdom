@@ -38,7 +38,7 @@ const RegisterForm = () => {
         setAlertMessage(data.message);
         return;
       }
-      setAlertMessage('Usuario registrado correctamente');
+      setAlertMessage('Successful registration');
       console.log("Usuario registrado correctamente")
       setFormData({
         username: '',
@@ -48,7 +48,7 @@ const RegisterForm = () => {
       });
     } catch (error) {
       console.error('Error:', error.message);
-      setAlertMessage('Error al registrar usuario');
+      setAlertMessage('Error to register user');
     }
   };
 
