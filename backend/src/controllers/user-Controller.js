@@ -59,20 +59,30 @@ export const updateUserByEmail = async (req, res) => {
       return res.status(404).json({ message: `No user found with the provided email. Email provided: ${email}` });
     }
 
-        // Compara la puntuación máxima actual del usuario con la puntuación obtenida en la partida
-        if (req.body.maxscore < user.maxscore) {
-          // Si la puntuación obtenida en la partida es mayor, actualiza el campo maxscore del usuario
-          req.body.maxscore = user.maxscore;
-        }
+    // Compara la puntuación máxima actual del usuario con la puntuación obtenida en la partida
+    if (req.body.maxscore < user.maxscore) {
+      // Si la puntuación obtenida en la partida es mayor, actualiza el campo maxscore del usuario
+      req.body.maxscore = user.maxscore;
+    }
 
+    // Elimina las claves vacías o nulas del cuerpo de la solicitud
+    for (const key in req.body) {
+      if (req.body[key] === '' || req.body[key] === null) {
+        delete req.body[key];
+      }
+    }
 
+    // Elimina las claves que no deben ser actualizadas
     delete req.body.email;
+    delete req.body.rol;
+
     user = await User.findOneAndUpdate({ email }, { $set: req.body }, { new: true });
 
     console.log("Usuario actualizado:", user);
-    res.status(200).json( {message: "The user data has been updated successfully."});
+    res.status(200).json({ message: "The user data has been updated successfully." });
   } catch (error) {
     console.log('ERROR: Error al actualizar los datos del usuario por correo electrónico', error);
     res.status(500).json({ message: 'Error updating user data by email.' });
   }
 };
+
