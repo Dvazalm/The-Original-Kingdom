@@ -54,8 +54,8 @@ Para instalar y ejecutar el proyecto:
 1. Ejecutar `npm install` para instalar las dependencias.
 
 2. Lanzar el proyecto:
+
     Opción 1: Ejecutar `docker-compose up` para utilizar Docker.
-    
     Opción 2: Ejecutar `npm start` en la carpeta backend y despues en la carpeta frontend respectivamente.
 
 3. Asegurarse de que el backend se inicie primero para ocupar el puerto 3000 y luego iniciar el frontend en el puerto 3001.
