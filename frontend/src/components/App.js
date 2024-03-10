@@ -42,10 +42,10 @@ function App() {
         
         {isGameON && (
           <MainMenuButton handleClickMainMenu={handleClickMainMenu} />
-        )};
+        )}
         {!isGameON && (
           <LoginAndRegisterController />
-        )};
+        )}
 
       </header>
 

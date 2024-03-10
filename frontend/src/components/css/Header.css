@@ -1,116 +1,240 @@
 .App-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(180deg, rgb(0, 0, 0) 25%, rgba(255, 0, 0, 0) 100%);
-    padding: 10px 20px; /* Agrega un poco de espacio alrededor del header */
-    z-index: 1;
-  }
-  
-  #pagConfig { 
-    display: flex;
-    flex-direction: column;
-    text-align: center; /* Centra el contenido dentro de #pagConfig */
-    width: 200px;
-  }
-  
-  .volume-block {
-    width: 50px;
-    height: 50px;
-    transition: all 0.3s;
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 25%, rgba(255, 0, 0, 0) 100%);
+  padding: 10px 20px;
+  /* Agrega un poco de espacio alrededor del header */
+  z-index: 1;
+}
 
-  .volume-block:hover {
-    background-color: transparent;
-    background-size: 0px;
-    backdrop-filter:opacity(0%);
-  }
+#pagConfig {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* Centra el contenido dentro de #pagConfig */
+  width: 200px;
+}
 
-  #musicVolume{
+.volume-block {
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.volume-block:hover {
+  background-color: transparent;
+  background-size: 0px;
+  backdrop-filter: opacity(0%);
+}
+
+#musicVolume {
   background-image: url("../../../public/resources/img/MusicSFXLogoWhite.png");
-  }
+}
 
-  #musicVolumeSFX{
-    background-image: url("../../../public/resources/img/volumeSFXLogoWhite.png");
-    }
+#musicVolumeSFX {
+  background-image: url("../../../public/resources/img/volumeSFXLogoWhite.png");
+}
 
-  .volume-slider{
-    width: 0;
-    transition: all 0.3s;
-    margin-top: 17px;
-    opacity: 0%;
-  }
-
-
+.volume-slider {
+  width: 0;
+  transition: all 0.3s;
+  margin-top: 17px;
+  opacity: 0%;
+}
 
 
-  .volume-block:hover .volume-slider {
-    width: 150px; 
-    opacity: 100%;
-  }
-  
-  #registerAndLogin {
-    display: flex;
-    align-items: center;
-   
-  }
-  
 
-  .registerButton, .loginButton {
-    margin-left: 10px; /* Agregar un espacio entre los botones */
-    z-index: 1;
-    transition: all 0.4s;
-    font-size: 12px;
-    background-color: rgb(217, 217, 217);
-    box-shadow: 1px 2px 5px  black;
-    border: solid black 2px;
-    border-radius: 10px;
-    position: absolute;
-    top: 25px;
-  }
 
-  .registerButton:hover, .loginButton:hover {
-    box-shadow: 0px 0px 10px  black;
-    border-radius: 5px ;
-    background-color: white;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
+.volume-block:hover .volume-slider {
+  width: 150px;
+  opacity: 100%;
+}
 
-  .registerButton {
-    right: 120px;
+#registerAndLogin {
+  display: flex;
+  align-items: center;
 
-  }
+}
 
-  .loginButton{
-    right: 33px;
- 
-  }
 
-  #MainMenuButton {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    font-size: 20px;
-    padding: 35px 35px 40px 35px;
-    text-align: center;
-    background: url("../../../public/resources/button/blueButton.png");
-    background-position: center;
-    background-size: cover;
-    color: white;
-    border-radius: 100%;
-    transition: all 0.4s;
-    z-index: 2;
-    /* Asegura que MainMenuButton esté por encima de todo */
+.registerButton,
+.loginButton {
+  margin-left: 10px;
+  /* Agregar un espacio entre los botones */
+  z-index: 1;
+  transition: all 0.4s;
+  font-size: 12px;
+  background-color: rgb(217, 217, 217);
+  box-shadow: 1px 2px 5px black;
+  border: solid black 2px;
+  border-radius: 10px;
+  position: absolute;
+  top: 25px;
+}
+
+.registerButton:hover,
+.loginButton:hover {
+  box-shadow: 0px 0px 10px black;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.registerButton {
+  right: 120px;
+
+}
+
+.loginButton {
+  right: 33px;
+
+}
+
+#MainMenuButton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+  padding: 35px 35px 40px 35px;
+  text-align: center;
+  background: url("../../../public/resources/button/blueButton.png");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  border-radius: 100%;
+  transition: all 0.4s;
+  z-index: 2;
+  /* Asegura que MainMenuButton esté por encima de todo */
 }
 
 #MainMenuButton:hover {
-    filter: drop-shadow(5px 5px 14px #000000);
-    scale: 1.1;
-    color: yellow;
-    cursor: pointer;
-    transition: all 0.2s;
+  filter: drop-shadow(5px 5px 14px #000000);
+  scale: 1.1;
+  color: yellow;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+
+.update-profile-menu {
+  position: fixed;
+  /* Cambiado a fixed para mantenerlo centrado mientras se desplaza */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 550px;
+  background-color: gray;
+  background-image: url("../../../public/resources/img/rockBrick.jpg");
+  background-size: 50px;
+  border: solid black 3px;
+  box-shadow: 0px 0px 30px black;
+  border-radius: 20px;
+}
+
+.update-profile-menu h2 {
+  color: white;
+  filter: drop-shadow(0px 0px 5px #000000);
+  margin-bottom: 0px;
+}
+
+.closeEditMenu {
+  position: fixed;
+  right: 15px;
+  top: 5px;
+  width: 30px;
+  color: rgb(255, 255, 255);
+  height: 25px;
+  text-align: center;
+  font-size: 25px;
+  justify-content: center;
+  background-color: transparent;
+  border-color: transparent;
+  filter: drop-shadow(0px 0px 5px #000000);
+}
+
+.closeEditMenu:hover {
+  color: red;
+}
+
+
+.update-profile-menu .infoUpdateText {
+  font-size: 16px;
+  filter: drop-shadow(0px 0px 5px #000000);
+  color: orange;
+  text-align: center;
+  margin: 0px 400px;
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.update-profile-menu form {
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  font-size: 20px;
+
+}
+
+.update-profile-menu label {
+  color: white;
+  margin-top: 10px;
+  filter: drop-shadow(0px 0px 5px #000000);
+
+}
+
+.update-profile-menu input {
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px black;
+  border: solid black 2px;
+
+
+}
+
+.update-profile-menu input:focus {
+  background-color: rgb(220, 220, 220);
+}
+
+.update-profile-menu input:placeholder-shown {
+  background-color: rgb(170, 170, 170);
+}
+
+.update-profile-menu button {
+  margin-top: 10px;
+
+}
+
+.update-profile-menu .error-message {
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(0px 0px 5px #666666);
+
+}
+
+
+.update-profile-menu .submit {
+  margin-top: 20px;
+  /* Agregar un espacio entre los botones */
+  z-index: 1;
+  transition: all 0.1s;
+  font-size: 20px;
+  background-color: rgb(217, 217, 217);
+  box-shadow: 1px 2px 5px black;
+  border: solid black 2px;
+  border-radius: 10px;
+  top: 25px;
+}
+
+.update-profile-menu .submit:hover {
+  background-color: rgb(180, 180, 180);
+  border-radius: 2px;
+  cursor: pointer;
 }
