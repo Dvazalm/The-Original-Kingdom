@@ -4,6 +4,10 @@
 
 "The Original Kingdom" es un juego de simulación de toma de decisiones en el que los jugadores asumen el papel de un rey medieval. El objetivo del juego es tomar decisiones estratégicas para mantener el equilibrio y la prosperidad en el reino durante el mayor tiempo posible.
 
+# Árbol de decisiones
+![Árbol de decisiones](./ArbolDeDecisiones.png)
+
+
 ## 📂 Arquitectura y estructura del proyecto:
 
 El proyecto se divide en dos partes principales:
