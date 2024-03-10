@@ -1,0 +1,17 @@
+# Utiliza una imagen base de Node.js
+FROM node:20.7.0
+
+# Establece el directorio de trabajo en /app/backend
+WORKDIR /app/backend
+
+# Copia los archivos de la aplicación backend al contenedor
+COPY . .
+
+# Instala las dependencias
+RUN npm install
+
+# Expone el puerto 3000
+EXPOSE 3000
+
+# Comando para ejecutar la aplicación backend
+CMD ["npm", "start"]
