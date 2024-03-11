@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "0943a791-7d0a-47c3-8fd2-4d10569cc740",
+		"name": "UserApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31465286"
+	},
+	"item": [
+		{
+			"name": "POST register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba para verificar el mensaje de registro\r",
+							"pm.test(\"Verify registration message\", function () {\r",
+							"    // Obtiene el cuerpo de la respuesta\r",
+							"    var responseBody = pm.response.json();\r",
+							"\r",
+							"    // Verifica si el mensaje es de registro exitoso\r",
+							"    if (responseBody.message === \"Successfully registered user\") {\r",
+							"        // Si el mensaje es de registro exitoso, se pasa la prueba\r",
+							"        pm.expect(responseBody.message).to.eql(\"Successfully registered user\");\r",
+							"    } else if (responseBody.message === \"Username or email already in use.\") {\r",
+							"        // Si el mensaje es de nombre de usuario o correo electrónico en uso, se pasa la prueba\r",
+							"        pm.expect(responseBody.message).to.eql(\"Username or email already in use.\");\r",
+							"    } else {\r",
+							"        // Si el mensaje no coincide con ninguno de los esperados, la prueba falla\r",
+							"        pm.expect(responseBody.message).to.be.oneOf([\"Successfully registered user\", \"Username or email already in use.\"]);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n  \"username\": \"prueba@gmail.com\",\r\n  \"email\": \"prueba@gmail.com\",\r\n  \"password\": \"123\",\r\n  \"image\": \"./resources/img/userImg.png\",\r\n  \"maxscore\": 0\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/user/register"
+			},
+			"response": []
+		},
+		{
+			"name": "GET data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba para verificar que la respuesta es válida\r",
+							"pm.test(\"Response is valid\", function () {\r",
+							"    // Verifica que la respuesta tenga el campo \"decision\"\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"_id\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"username\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"email\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"image\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"maxscore\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"rol\");\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/user/data/prueba@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica el mensaje de respuesta\r",
+							"pm.test(\"Response body has expected message\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+							"    pm.expect(pm.response.json().message).to.be.oneOf([\"No user found with the provided email. Email provided: prueba@gmail.com\", \"The user data has been updated successfully.\"]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"username\": \"\",\r\n    \"password\": \"Updateado\",\r\n    \"image\": \"\",\r\n    \"maxscore\": 20\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/user/update/prueba@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica el mensaje de respuesta\r",
+							"pm.test(\"Response body has expected message\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+							"    pm.expect(pm.response.json().message).to.be.oneOf([\"User deleted successfully: prueba@gmail.com\", \"Error deleting user\"]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/delete/prueba@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"delete",
+						"prueba@gmail.com"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": null,
+							"value": "65b003b9e7290c8c023a9471",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

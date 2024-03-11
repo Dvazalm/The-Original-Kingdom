@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "08d29165-f958-440b-997e-c4ec05094362",
+		"name": "DecisionApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31465286"
+	},
+	"item": [
+		{
+			"name": "POST create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica que la respuesta contenga los campos esperados\r",
+							"pm.test(\"Response body has expected fields\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"title\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"description\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"NpcImg\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"acceptPoints\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"declinePoints\");\r",
+							"    pm.expect(pm.response.json()).to.have.property(\"_id\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Heritage Site Restoration Project\",\r\n    \"description\": \"Undertake a project to restore and preserve heritage sites for future generations. Shall we proceed?\",\r\n    \"NpcImg\": \"./resources/NPCs/guards/1.jpg\",\r\n    \"acceptPoints\": {\"population\": 8, \"economy\": -6},\r\n    \"declinePoints\": {\"population\": -6, \"economy\": 8}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/decision/create"
+			},
+			"response": []
+		},
+		{
+			"name": "GET random decision",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba para verificar que la respuesta es válida\r",
+							"pm.test(\"Response is valid\", function () {\r",
+							"    // Obtiene el cuerpo de la respuesta\r",
+							"    var responseBody = pm.response.json();\r",
+							"\r",
+							"    // Verifica que la respuesta tenga el campo \"decision\"\r",
+							"    pm.expect(responseBody).to.have.property(\"decision\");\r",
+							"    // Verifica que el campo \"decision\" tenga un valor\r",
+							"    pm.expect(responseBody.decision).to.not.eql(null);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/decision/randomDecision"
+			},
+			"response": []
+		},
+		{
+			"name": "GET data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba para verificar que la respuesta es válida\r",
+							"pm.test(\"Response is valid\", function () {\r",
+							"    // Obtiene el cuerpo de la respuesta\r",
+							"    var responseBody = pm.response.json();\r",
+							"\r",
+							"    // Verifica que la respuesta tenga el campo \"decision\"\r",
+							"    pm.expect(responseBody).to.have.property(\"decision\");\r",
+							"    // Verifica que el campo \"decision\" tenga un valor\r",
+							"    pm.expect(responseBody.decision).to.not.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"_id\": \"65e71b942374e6e473c9abf3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/decision/data/"
+			},
+			"response": []
+		}
+	]
+}
