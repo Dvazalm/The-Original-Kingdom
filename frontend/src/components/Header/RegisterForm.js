@@ -9,6 +9,8 @@ const RegisterForm = () => {
     confirmPassword: ''
   });
   const [alertMessage, setAlertMessage] = useState('');
+  const [color, setcolor] = useState('');
+  const [size, setsize] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,15 +39,17 @@ const RegisterForm = () => {
         const data = await response.json();
         setAlertMessage(data.message);
         return;
-      }
+      }else{
       setAlertMessage('Successful registration');
+      setcolor("lime");
+      setsize("20px");
       console.log("Usuario registrado correctamente")
       setFormData({
         username: '',
         email: '',
         password: '',
         confirmPassword: ''
-      });
+      });}
     } catch (error) {
       console.error('Error:', error.message);
       setAlertMessage('Error to register user');
@@ -60,7 +64,7 @@ const RegisterForm = () => {
       <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
       <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
       <button id='submitRegisterButtom' type="submit">Register</button>
-      {alertMessage && <div className="alert">{alertMessage}</div>}
+      {alertMessage && <div className="alert" style={{color: color, fontSize: size}}>{alertMessage}</div>}
     </form>
   );
 };

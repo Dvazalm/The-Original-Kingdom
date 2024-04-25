@@ -1,4 +1,5 @@
 import User from '../models/User.js';
+import bcrypt from 'bcrypt';
 
 // Controlador para obtener los datos de un usuario
 export const getUserByEmail = async (req, res) => {
@@ -71,6 +72,17 @@ export const updateUserByEmail = async (req, res) => {
         delete req.body[key];
       }
     }
+    const pass = req.body.password
+    console.log(pass);
+    if(pass){
+      const hashedPassword = await bcrypt.hash(pass, 10);
+      req.body.password = hashedPassword;
+      console.log(hashedPassword);
+    console.log(req.body.password);
+    }
+
+
+
 
     // Elimina las claves que no deben ser actualizadas
     delete req.body.email;

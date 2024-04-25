@@ -35,7 +35,6 @@ const playSound = (soundPath) => {
 };
 
 
-
   const handleClickStart = () => {
     setIsCurtainOpen(true);
     setTimeout(() => {
