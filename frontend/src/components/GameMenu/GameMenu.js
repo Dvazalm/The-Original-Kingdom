@@ -1,7 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { handlePoints, applyColorChanges, applyHoverColorChanges } from "./PointsController";
 
+
+
+
+
 const GameMenu = ({ handleClickMainMenu }) => {
+
+    
+const playSoundSFX = (soundPath) => {
+    const audioElement = document.getElementById('audioRefSFX');
+    audioElement.src = soundPath;
+    audioElement.play();
+};
+const playSound = (soundPath) => {
+    const audioElement = document.getElementById('audioRef');
+    audioElement.src = soundPath;
+    audioElement.play();
+};
+
     const [decisionData, setDecisionData] = useState(null);
     const [factions, setFactions] = useState({
         religion: { points: 10 },
@@ -10,9 +27,9 @@ const GameMenu = ({ handleClickMainMenu }) => {
         protection: { points: 10 },
         economy: { points: 10 },
     });
-    const [lost, setLost] = useState(false); // Estado para controlar si el jugador ha perdido
+    const [lose, setlose] = useState(false); // Estado para controlar si el jugador ha perdido
     const [playerPoints, setplayerPoints] = useState(0); // Estado para controlar si el jugador ha perdido
-    const [lostFaction, setLostFaction] = useState(""); // Estado para almacenar la facción que llegó a 0
+    const [loseFaction, setloseFaction] = useState(""); // Estado para almacenar la facción que llegó a 0
 
     //Busqueda en la base de datos
     const fetchData = async () => {
@@ -73,6 +90,9 @@ const GameMenu = ({ handleClickMainMenu }) => {
 
     // Función para manejar el hover sobre acceptPoints
     const handleAcceptPointsHover = () => {
+
+        playSoundSFX("./resources/music/paper-sound-effect.mp3");
+
         if (decisionData && decisionData.acceptPoints) {
             const affectedFactions = Object.keys(decisionData.acceptPoints);
             applyHoverColorChanges(factions, decisionData.acceptPoints, affectedFactions);
@@ -85,6 +105,9 @@ const GameMenu = ({ handleClickMainMenu }) => {
     };
     // Función para manejar el hover sobre declinePoints
     const handleDeclinePointsHover = () => {
+
+        playSoundSFX("./resources/music/paper-sound-effect.mp3");
+
         if (decisionData && decisionData.declinePoints) {
             const affectedFactions = Object.keys(decisionData.declinePoints);
             applyHoverColorChanges(factions, decisionData.declinePoints, affectedFactions);
@@ -116,13 +139,16 @@ const GameMenu = ({ handleClickMainMenu }) => {
 
     // Función para manejar el clic en acceptPoints o declinePoints
     const handlePointsClick = (points) => {
+
+        playSoundSFX("./resources/music/paper-sound-slider.mp3");
+
         newDecision();
         if (points && factions) {
             const newFactions = handlePoints(factions, points);
             setFactions(newFactions); // Actualizar las facciones con los nuevos puntos
         }
         applyColorChanges(factions);
-        if (!lost) {
+        if (!lose) {
             setplayerPoints(playerPoints + 10);
         };
     };
@@ -141,13 +167,21 @@ const GameMenu = ({ handleClickMainMenu }) => {
 
     useEffect(() => {
 
-        const isLost = Object.values(factions).some(faction => faction.points <= 0);
-        if (isLost) {
-            setLost(true);
-            const lostFaction = Object.entries(factions).find(([faction, data]) => data.points <= 0);
-            if (lostFaction) {
-                const [factionName] = lostFaction;
-                setLostFaction(factionName); // Establecer la facción que llegó a 0
+        const islose = Object.values(factions).some(faction => faction.points <= 0);
+        if (islose) {
+
+            playSound("./resources/music/loseMusic.mp3");
+
+            setTimeout(() => {
+                playSound("./resources/music/silend.ogg");
+            }, 3500);
+
+            setlose(true);
+
+            const loseFaction = Object.entries(factions).find(([faction, data]) => data.points <= 0);
+            if (loseFaction) {
+                const [factionName] = loseFaction;
+                setloseFaction(factionName); // Establecer la facción que llegó a 0
             }
 
             const deleteTimeout = () => {
@@ -243,11 +277,11 @@ const GameMenu = ({ handleClickMainMenu }) => {
 
             </div>
 
-            {lost && (
+            {lose && (
                 <div className="loss-menu">
                     <h1>LOSE</h1>
 
-                    <p>The <b>{lostFaction}</b> faction fell to 0. Now you will suffer the consequences...</p>
+                    <p>The <b>{loseFaction}</b> faction fell to 0. Now you will suffer the consequences...</p>
                     <p className="playerPoints">Your points <br /> <b>{playerPoints}</b></p>
                     <button onClick={handleClickMainMenu}><p>Main menu</p></button>
 

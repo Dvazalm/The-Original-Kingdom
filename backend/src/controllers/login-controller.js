@@ -13,7 +13,7 @@ export async function login(req, res, next) {
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (isPasswordValid) {
-        const token = jwt.sign({ id: user._id, email: user.email }, config.app.secretKey, { expiresIn: '1h' });
+        const token = jwt.sign({id: user._id, email: user.email },config.app.secretKey, { expiresIn: '1h' });
 
         console.log(`El usuario ${email} se ha logueado correctamente`);
 
