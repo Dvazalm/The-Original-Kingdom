@@ -256,6 +256,88 @@
     font-size: 30px;
 }
 
+#shopMenu img{
+    width: 150px;
+    margin-left: -27px;
+    transition: all 1s;
+}
+
+#shopMenu img:hover{
+    transition: all 0.3s;
+   scale: 1.2;
+    filter: drop-shadow(0px 0px 10px #ffffff90);  
+}
 
 
 
+.shop-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
+    background-image: url(../../../public/resources/img/woodTexture2.jpg);
+    background-size: 150px;
+    padding: 30px;
+    border: solid 4px rgb(139, 139, 139) ;
+    border-radius: 15px;
+    box-shadow: 0 0 1000px rgb(0, 0, 0);
+    z-index: 9999;
+    width: 900px;
+    height: 700px;
+    color: white;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.shop-menu div{
+    background-color: rgb(39, 39, 39);
+    overflow: hidden;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    filter: drop-shadow(0px 0px 10px #00000070);  
+    box-shadow: 0 0 10px black;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.shop-menu div:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.486);
+}
+
+.shop-menu div img{
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.shop-menu div h2{
+    font-size: 20px;
+    margin: 0px;
+}
+
+.shop-menu div button {
+    margin: 0px;
+    font-size: 20px;
+    padding: 40px 35px 40px 35px;
+    text-align: center;
+    background: url("../../../public/resources/button/redButton1.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    border-color: transparent;
+    transition: all 0.4s;
+    z-index: 2;
+    color: white;
+    /* Asegura que MainMenuButton esté por encima de todo */
+}
+
+.shop-menu div button:hover {
+    filter: drop-shadow(0px 0px 5px #000000);
+    color: yellow;
+    cursor: pointer;
+    transition: all 0.2s;
+}

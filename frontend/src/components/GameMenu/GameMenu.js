@@ -7,17 +7,17 @@ import { handlePoints, applyColorChanges, applyHoverColorChanges } from "./Point
 
 const GameMenu = ({ handleClickMainMenu }) => {
 
-    
-const playSoundSFX = (soundPath) => {
-    const audioElement = document.getElementById('audioRefSFX');
-    audioElement.src = soundPath;
-    audioElement.play();
-};
-const playSound = (soundPath) => {
-    const audioElement = document.getElementById('audioRef');
-    audioElement.src = soundPath;
-    audioElement.play();
-};
+
+    const playSoundSFX = (soundPath) => {
+        const audioElement = document.getElementById('audioRefSFX');
+        audioElement.src = soundPath;
+        audioElement.play();
+    };
+    const playSound = (soundPath) => {
+        const audioElement = document.getElementById('audioRef');
+        audioElement.src = soundPath;
+        audioElement.play();
+    };
 
     const [decisionData, setDecisionData] = useState(null);
     const [factions, setFactions] = useState({
@@ -30,6 +30,9 @@ const playSound = (soundPath) => {
     const [lose, setlose] = useState(false); // Estado para controlar si el jugador ha perdido
     const [playerPoints, setplayerPoints] = useState(0); // Estado para controlar si el jugador ha perdido
     const [loseFaction, setloseFaction] = useState(""); // Estado para almacenar la facción que llegó a 0
+    const [shopOpen, setShopOpen] = useState(false);
+
+
 
     //Busqueda en la base de datos
     const fetchData = async () => {
@@ -224,12 +227,6 @@ const playSound = (soundPath) => {
 
 
 
-
-
-
-
-
-
     return (
         <div id='GameMenu'>
             <div id="LateralMenu">
@@ -237,6 +234,10 @@ const playSound = (soundPath) => {
                     <h1>POINTS</h1>
                     <p>{playerPoints} </p>
                 </div>
+                <div id="shopMenu" onClick={() => setShopOpen(!shopOpen)} >
+                    <img src="./resources/img/shopIcon.png" alt="Shop" />
+                </div>
+
             </div>
             <div id="factionsBlock">
                 <div className="faction" id="religion">
@@ -277,6 +278,21 @@ const playSound = (soundPath) => {
 
             </div>
 
+            {shopOpen && (
+                <div className="shop-menu">
+                    <h1>SHOP</h1>
+
+                    <div>
+                        <img src="./resources/img/icon.png" />
+                        <h2>Jousting tournament</h2>
+                        <button /*onClick={() => }*/>-5 economy</button>
+                    </div>
+                </div>
+
+            )}
+
+
+
             {lose && (
                 <div className="loss-menu">
                     <h1>LOSE</h1>
@@ -287,6 +303,8 @@ const playSound = (soundPath) => {
 
                 </div>
             )}
+
+
 
             {/*
                         //////  CONTENIDO DESCARTADO PARA VER CUANTO SUMA Y RESTA CASA DECICION //////
