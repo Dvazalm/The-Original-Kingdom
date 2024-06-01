@@ -9,7 +9,7 @@ function UserProfileMenu({ userEmail, handleLogout }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/user/data/${userEmail}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/user/data/${userEmail}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ function UserProfileMenu({ userEmail, handleLogout }) {
 
     // Aquí debes implementar la lógica para enviar los datos actualizados del usuario al backend.
     try {
-      const response = await fetch(`http://localhost:3000/api/user/update/${userData.email}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/user/update/${userData.email}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ function UserProfileMenu({ userEmail, handleLogout }) {
 
 
     try {
-      const response = await fetch(`http://localhost:3000/api/user/data/${userData.email}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/user/data/${userData.email}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

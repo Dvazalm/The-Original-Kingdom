@@ -37,7 +37,7 @@ const GameMenu = ({ handleClickMainMenu }) => {
     //Busqueda en la base de datos
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/decision/randomDecision`);
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/decision/randomDecision`);
             if (!response.ok) {
                 throw new Error('No se pudo obtener la decisión');
             }
@@ -201,7 +201,7 @@ const GameMenu = ({ handleClickMainMenu }) => {
                 // Envía la solicitud de actualización si la puntuación actual es mayor que la anterior
                 const updateMaxScore = async () => {
                     try {
-                        const response = await fetch(`http://localhost:3000/api/user/update/${userEmail}`, {
+                        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/user/update/${userEmail}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -234,9 +234,15 @@ const GameMenu = ({ handleClickMainMenu }) => {
                     <h1>POINTS</h1>
                     <p>{playerPoints} </p>
                 </div>
+               
+               {/* MENU DE TIENDA */}
+               {/* 
                 <div id="shopMenu" onClick={() => setShopOpen(!shopOpen)} >
                     <img src="./resources/img/shopIcon.png" alt="Shop" />
                 </div>
+                */}
+
+
 
             </div>
             <div id="factionsBlock">
