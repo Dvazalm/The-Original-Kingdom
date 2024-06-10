@@ -55,10 +55,21 @@ Se proporcionan las siguientes rutas de API para las peticiones al backend:
 ## 📑 Instrucciones de instalación, configuración e instrucciones de uso:
 
 Para instalar y ejecutar el proyecto:
-1. Ejecutar `npm install` para instalar las dependencias.
 
-2. Lanzar el proyecto:
+Primero debemos ir al backend con `cd backend`, a continuación:
+
+    1. Ejecutar `npm install` para instalar las dependencias.
+
+    2. Lanzar el proyecto:
     - Opción 1: Ejecutar `docker-compose up` para utilizar Docker.
-    - Opción 2: Ejecutar `npm start` en la carpeta backend y despues en la carpeta frontend respectivamente.
+    - Opción 2: Ejecutar `npm start`.
 
-3. Asegurarse de que el backend se inicie primero para ocupar el puerto 3000 y luego iniciar el frontend en el puerto 3001.
+    3. Asegurarse de que el backend se inicie primero para ocupar el puerto 3000.
+
+Despues debemos abrir una nueva terminal e ir al frontend con `cd frontend`, a continuación:
+
+    1. Ejecutar `npm install` para instalar las dependencias.
+
+    2. Lanzar el proyecto ejecutando `npm start`.
+
+    3. Asegurarse de que el frontend se inicia en un puerto diferente al del backend.
