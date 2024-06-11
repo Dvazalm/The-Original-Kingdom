@@ -21,6 +21,9 @@ El proyecto se divide en dos partes principales:
 - El directorio "public" almacena el archivo index.html y otros recursos como imágenes y videos.
 - Se hace uso de los estados de React (UseState) para el manejo de la lógica del juego.
 
+Protopito de frontend: [FIGMA](https://www.figma.com/community/file/1382300407944413432/the-original-kingdom-figma)
+
+
 ## ⚙ Funcionalidades principales:
 
 El juego incluye las siguientes características principales:
