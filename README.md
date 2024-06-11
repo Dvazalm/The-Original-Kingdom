@@ -41,6 +41,8 @@ El proyecto fue desarrollado utilizando las siguientes tecnologías:
 
 Se proporcionan las siguientes rutas de API para las peticiones al backend:
 
+Aqui la colecion YAML: [SWAGGER](https://app.swaggerhub.com/apis/DVAZALM/The-Original-Kingdom/1.0.0-oas3)
+
 ### 👥 Usuarios:
 - POST /api/user/register -> Registro de nuevos usuarios.
 - GET /api/user/data/:email -> Obtener datos de un usuario específico.
